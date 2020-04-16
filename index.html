@@ -21,17 +21,17 @@
 
 			<component-grid></component-grid>
 
-			<div class="entered-letters">{{formatCurrentWord}}</div>
-			
-			<div>
-				<component-buttons></component-buttons>
+			<div class="entered-letters">
+				{{ formatCurrentWord }}
 			</div>
+			
+			<component-buttons></component-buttons>
 
 			<component-keyboard></component-keyboard>
 
 			<button @click="shuffleLetters">Shuffle Letters</button>
 		
-			<button>Enter Word</button>
+			<button @click="enterWord">Enter Word</button>
 		</div>
 	</div>
 
