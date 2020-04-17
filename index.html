@@ -19,6 +19,8 @@
 		
 		<div class="wrapper">
 
+			{{ gameTitle }}
+
 			<component-grid></component-grid>
 
 			<div class="entered-letters">
@@ -27,24 +29,37 @@
 			
 			<component-buttons></component-buttons>
 
+			<button @click="shuffleLetters">Shuffle Letters</button>
+
 			<component-keyboard></component-keyboard>
 
-			<button @click="shuffleLetters">Shuffle Letters</button>
-		
-			<button @click="enterWord">Enter Word</button>
+			<div class="enter-word">
+				<button @click="enterWord">Enter Word</button>
+			</div>
+
 		</div>
 	</div>
 
 
 	<script src="js/components/component-grid.js"></script>
 	<script src="js/components/component-keys.js"></script>
+	<script src="js/components/component-key.js"></script>
+
 	<script src="js/components/component-buttons.js"></script>
 
 	<script>
 	var app = new Vue({
 	  el: '#app',
 	  data: {
-	    startingLetters: ['A', 'S', 'D', 'F', 'E'],
+	  	gameTitle: 'Word Scrambler',
+	    //startingLetters: ['A', 'S', 'D', 'F', 'E'],
+	    startingLetters: [
+	    	{ id: 1, letter: 'A'}, 
+	    	{ id: 2, letter: 'S'},
+	    	{ id: 3, letter: 'D'},
+	    	{ id: 4, letter: 'F'},
+	    	{ id: 5, letter: 'E'},
+	    ],
 	    currentWord: [],
 	    correctWords: ['FAD', 'SAD', 'SEA', 'ADS', 'SAFE', 'FADES']
 	  },
