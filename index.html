@@ -44,15 +44,19 @@
 	var app = new Vue({
 	  el: '#app',
 	  data: {
-	    message: 'Hello Vue!',
-	    startingLetters: ['A', 'B', 'C', 'D', 'E'],
+	    startingLetters: ['A', 'S', 'D', 'F', 'E'],
 	    currentWord: [],
+	    correctWords: ['FAD', 'SAD', 'SEA', 'ADS', 'SAFE', 'FADES']
 	  },
 
 	  methods: {
         shuffleLetters : function() {
-			console.log(this.startingLetters);
+			//console.log(this.startingLetters);
 			this.startingLetters.sort((a, b) => Math.random() > .5 ? -1 : 1);
+        },
+
+        enterWord: function(){
+        	
         }
 	  },
 
