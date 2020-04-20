@@ -33,9 +33,7 @@
 
 			<component-keyboard></component-keyboard>
 
-			<div class="enter-word">
-				<button @click="enterWord">Enter Word</button>
-			</div>
+			<component-enter-word></component-enter-word>
 
 		</div>
 	</div>
@@ -44,6 +42,7 @@
 	<script src="js/components/component-grid.js"></script>
 	<script src="js/components/component-keys.js"></script>
 	<script src="js/components/component-key.js"></script>
+	<script src="js/components/component-enter-word.js"></script>
 
 	<script src="js/components/component-buttons.js"></script>
 
@@ -52,7 +51,11 @@
 	  el: '#app',
 	  data: {
 	  	gameTitle: 'Word Scrambler',
-	    //startingLetters: ['A', 'S', 'D', 'F', 'E'],
+	  	gameState: {
+	  		playing: true,
+	  		paused: false
+	  	},
+	    currentWord: [],
 	    startingLetters: [
 	    	{ id: 1, letter: 'A'}, 
 	    	{ id: 2, letter: 'S'},
@@ -60,24 +63,27 @@
 	    	{ id: 4, letter: 'F'},
 	    	{ id: 5, letter: 'E'},
 	    ],
-	    currentWord: [],
-	    correctWords: ['FAD', 'SAD', 'SEA', 'ADS', 'SAFE', 'FADES']
+	    correctWords: [
+	    	{ word: 'FAD', found: 0 },
+	    	{ word: 'SAD', found: 0 },
+	    	{ word: 'SEA', found: 0 },
+	    	{ word: 'ADS', found: 0 },
+	    	{ word: 'SAFE', found: 0 },
+	    	{ word: 'FADES', found: 0 }
+	  	]
 	  },
 
 	  methods: {
         shuffleLetters : function() {
-			//console.log(this.startingLetters);
-			this.startingLetters.sort((a, b) => Math.random() > .5 ? -1 : 1);
-        },
-
-        enterWord: function(){
-        	
         }
 	  },
 
 	  computed:  {
 	  	formatCurrentWord: function() {
-	  		return this.currentWord.join('')
+			function joinLetters(el){
+			    return el.letter;
+			}
+	  		return this.currentWord.map(joinLetters).join('');
 	  	}
 	  }
 	})
