@@ -5,55 +5,6 @@ var app = window.app || {};
     'use strict';
 
     /**
-     * Take supplied cell object and return a more helpful version
-     * @param {object} cell
-     * @retrun {object} obj
-     */
-    app.helpers.getCellObject = function (cell) {
-
-        var obj = {
-            isBlank: cell.Blank === 'blank',
-            letter: cell.Letter,
-            id: cell.SquareID,
-        };
-
-        if (cell.Number !== '') {
-            obj.number = cell.Number;
-        }
-
-        if (cell.WordAcrossID !== '') {
-            obj.across = cell.WordAcrossID;
-        }
-
-        if (cell.WordDownID !== '') {
-            obj.down = cell.WordDownID;
-        }
-
-        return obj;
-    };
-
-    /**
-     * Get an array of clues adding some helper info
-     * @param {array} clues
-     * @param {string} direction
-     * @param {integer} cluesetidx
-     * @retrun {array} arr
-     */
-    app.helpers.getCluesArray = function (clues, direction, cluesetidx) {
-
-        var arr = [];
-
-        for (var i = 0; i < clues.length; i++) {
-            var obj = clues[i];
-            obj.direction = direction.toLowerCase();
-            obj.cluesetidx = cluesetidx;
-            arr.push(obj);
-        }
-
-        return arr;
-    };
-
-    /**
      * Get the default answer state object
      * @return {object}
      */
@@ -83,68 +34,6 @@ var app = window.app || {};
     };
 
     /**
-     * Get the first cell of specified word using current settings
-     * @param {integer} word
-     * @param {boolean} skipFilled
-     * @return {integer}
-     */
-    app.helpers.getFirstCellOfWord = function (word, skipFilled) {
-
-    };
-
-    app.helpers.getWordFromId = function (wordId) {
-
-        var vm = app.vue.model,
-            word = vm.puzzle.words[wordId],
-            cells = word.cells,
-            string = '';
-
-        for (var i = 0; i < cells.length; i++) {
-            string += cells[i].letter;
-        }
-
-        return string;
-
-    };
-
-
-    app.helpers.isWordCompletedCorrectly = function (wordId) {
-
-        var vm = app.vue.model,
-            word = vm.puzzle.words[wordId],
-            cells = word.cells,
-            answers = vm.user.answers;
-
-        for (var i = 0; i < cells.length; i++) {
-            var key = 'cell_' + (cells[i].id - 1);
-            if (cells[i].letter !== answers[key]) {
-                return false;
-            }
-        }
-
-        return true;
-
-    };
-
-    app.helpers.getUserAnswerForWord = function (wordId) {
-
-        var vm = app.vue.model,
-            word = vm.puzzle.words[wordId],
-            cells = word.cells,
-            answers = vm.user.answers,
-            string = '';
-
-        for (var i = 0; i < cells.length; i++) {
-            var key = 'cell_' + (cells[i].id - 1);
-            string += answers[key];
-        }
-
-        return string;
-
-    };
-
-
-    /**
      * Start puzzle
      */
     app.helpers.puzzleStart = function (vm) {
@@ -163,16 +52,10 @@ var app = window.app || {};
      * Reset any flags that indicate current game state
      */
     app.helpers.resetFlags = function () {
+        
         app.vue.data.active = {};
-        app.vue.data.check = {
-            grid: false,
-            letter: null,
-            word: null,
-        };
         app.vue.data.feedback = {};
         app.vue.data.modals.visible = [];
-        app.vue.data.modes.pencil = false;
-        app.vue.data.reveal.grid = false;
 
         app.vue.data.current = {
             word: [],
@@ -182,10 +65,7 @@ var app = window.app || {};
 
         app.vue.data.show = {
             help: false,
-            settings: false,
-            tooltip: 1,
-            unused: false,
-            video: null,
+            settings: false
         };
     };
 

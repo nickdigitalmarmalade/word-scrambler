@@ -42,8 +42,14 @@ Vue.component('component-keyboard', {
                 //console.log(this.$root.puzzle.levels[0].correctwords);
 
                 if(this.isCorrectWord()){
-                    this.addScore();
-                    this.wordstatus = true;
+
+                    if(!this.isAlreadyFound()){
+                        this.addScore();
+                        this.wordstatus = true;
+                    }
+                    
+                    this.$root.puzzle.current.found.push(this.$root.getCurrentWord);
+
                 } else {
                     this.wordstatus = false;
                 }
@@ -53,6 +59,10 @@ Vue.component('component-keyboard', {
 
             }
             // TODO: Check if word correct and not already used before.
+        },
+
+        isAlreadyFound: function(){
+            return this.$root.puzzle.current.found.includes(this.$root.getCurrentWord);
         },
         isCorrectWord: function(){
             return this.$root.puzzle.levels[0].correctwords.includes(this.$root.getCurrentWord)

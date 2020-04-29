@@ -31,14 +31,6 @@ var app = window.app || {};
 
     };
 
-    /*  ------------  */
-    /*    Vue Data    */
-    /*  ------------  */
-
-    app.vue.data.keyboard = [
-
-    ];
-
     app.vue.data.modes.grid = true;
 
     /*  ----------------------  */
@@ -53,16 +45,7 @@ var app = window.app || {};
 
         var obj = {
             cells: [],
-            clues: [],
-            cluesets: [],
             copy: {},
-            counts: {
-                cells: {
-                    active: 0,
-                    blank: 0,
-                    total: 0,
-                },
-            },
             feedback: source.feedback || {},
             grid: [],
             settings: app.settings || {},
@@ -71,7 +54,8 @@ var app = window.app || {};
                 word: [],
                 letters: [],
                 level: 0,
-                score: 0
+                score: 0,
+                found: []
             }
         };
 
@@ -91,76 +75,9 @@ var app = window.app || {};
         return obj;
     };
 
-    app.vue.methods.isWordCompleted = function (id) {
-
-    };
-
-
-    // app.vue.methods.setActiveClue = function (id) {
-    //     app.vue.model.active.cell = app.helpers.getFirstCellOfWord(id, true); //this.$root.puzzle.words[id].cells[0].id;
-    //     app.vue.model.active.direction = app.vue.model.puzzle.clues[id].direction;
-    //     app.helpers.moveGridToCurrentSelection();
-    //     app.helpers.saveActiveState();
-    // };
-
     /*  -----------------------  */
     /*    Vue Global Watchers    */
     /*  -----------------------  */
-
-    // app.vue.watch.activeWord = function (word) {
-    //     app.helpers.scrollToClue(word);
-    //     app.vue.model.$set(app.vue.data.last, 'cell-' + this.active.direction, this.active.cell);
-    // };
-
-    app.vue.watch.isCompleted = function (val) {
-        if (val === true) {
-            if (this.isCompletedWithoutErrors && app.status.completed === null) {
-                app.status.completed = {
-                    when: (new Date()).getTime(),
-                    time: this.timerDisplay,
-                    seconds: app.timer.get(),
-                };
-                app.helpers.saveUserPlayStatus();
-            }
-            if (this.isCompletedWithoutErrors) {
-                app.vue.model.resetActions();
-                app.vue.data.modals.visible.push('success');
-                app.timer.stop();
-            }
-        }
-    };
-
-    app.vue.watch.isCompletedWithErrors = function (val) {
-        if (val === true) {
-            var obj = {
-                'action': 'event',
-                'category': 'completion',
-                'item': 'negative',
-                'value': this.timerDisplay,
-            }
-            app.vue.methods.marmalyticSend(obj);
-        }
-    };
-
-    app.vue.watch.isCompletedWithoutErrors = function (val) {
-        if (val === true) {
-            if (app.timer) {
-                app.timer.stop();
-            }
-            var obj = {
-                'action': 'event',
-                'category': 'completion',
-                'item': 'positive',
-                'value': this.timerDisplay,
-            }
-            app.vue.methods.marmalyticSend(obj);
-        }
-    };
-
-    // app.vue.watch['modes.grid'] = function (val) {
-    //     app.vue.model.$set(app.vue.data.active, 'mode', val ? 'grid' : 'list');
-    //     app.helpers.saveActiveState();
-    // };
 
     app.vue.watch.userSettings = function () {
         app.helpers.saveUserState();

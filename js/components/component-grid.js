@@ -22,8 +22,20 @@ Vue.component('component-grid', {
 			</tr>
 		</tbody>
 	</table>
+	
+
+
+	<div v-for="(word, idx) in wordsList">
+		<component-word :word="word"></component-word>
+	</div>
 
     </div>`,
 
-    props: ['item'],
+    props: [],
+    computed: {
+
+        wordsList: function() {
+            return this.$root.puzzle.levels[0].correctwords;
+        }
+    }
 });
