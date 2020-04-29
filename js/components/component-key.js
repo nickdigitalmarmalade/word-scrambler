@@ -2,7 +2,7 @@ Vue.component('component-keyboard-key', {
     template: `<a href="#" 
                     @click.prevent="addLetter(letter, idx)"
                     :class="{ isLetterUsed: isLetterUsed }">
-                    {{ letter.letter }}
+                    {{ letter }} {{ resetLetterClass }}
                 </a>`,
     props: ['letter', 'idx'],
     computed: {
@@ -15,11 +15,11 @@ Vue.component('component-keyboard-key', {
             this.isLetterUsed = !this.isLetterUsed;
 
             if(this.isLetterUsed){
-                this.$root.currentWord.push(letter);
+                this.$root.puzzle.current.word.push(letter);
             } else {
 
                 // Remove item.
-                this.$root.currentWord.splice(this.$root.currentWord.findIndex(x => x.id === letter.id), 1);
+                this.$root.puzzle.current.word.splice(this.$root.puzzle.current.word.findIndex(x => x.id === letter.id), 1);
             }
         }
 
@@ -31,5 +31,12 @@ Vue.component('component-keyboard-key', {
       },
     created: function() {
 
+    },
+    computed: {
+        resetLetterClass() {
+            if(this.$root.puzzle.current.word.length === 0){
+                this.isLetterUsed = false;
+            }
+        }
     },
 });

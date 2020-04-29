@@ -1,93 +1,303 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	
-	<link rel="stylesheet" href="css/reset.css">
-
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/grid.css">
-	<link rel="stylesheet" href="css/keyboard.css">
-	<link rel="stylesheet" href="css/buttons.css">
-
-	<script src="js/vendor/vue.js"></script>
-</head>
-<body>
-
-	<div id="app">
-		
-		<div class="wrapper">
-
-			{{ gameTitle }}
-
-			<component-grid></component-grid>
-
-			<div class="entered-letters">
-				{{ formatCurrentWord }}
-			</div>
-			
-			<component-buttons></component-buttons>
-
-			<button @click="shuffleLetters">Shuffle Letters</button>
-
-			<component-keyboard></component-keyboard>
-
-			<component-enter-word></component-enter-word>
-
-		</div>
-	</div>
-
-
-	<script src="js/components/component-grid.js"></script>
-	<script src="js/components/component-keys.js"></script>
-	<script src="js/components/component-key.js"></script>
-	<script src="js/components/component-enter-word.js"></script>
-
-	<script src="js/components/component-buttons.js"></script>
-
-	<script>
-	var app = new Vue({
-	  el: '#app',
-	  data: {
-	  	gameTitle: 'Word Scrambler',
-	  	gameState: {
-	  		playing: true,
-	  		paused: false
-	  	},
-	    currentWord: [],
-	    startingLetters: [
-	    	{ id: 1, letter: 'A'}, 
-	    	{ id: 2, letter: 'S'},
-	    	{ id: 3, letter: 'D'},
-	    	{ id: 4, letter: 'F'},
-	    	{ id: 5, letter: 'E'},
-	    ],
-	    correctWords: [
-	    	{ word: 'FAD', found: 0 },
-	    	{ word: 'SAD', found: 0 },
-	    	{ word: 'SEA', found: 0 },
-	    	{ word: 'ADS', found: 0 },
-	    	{ word: 'SAFE', found: 0 },
-	    	{ word: 'FADES', found: 0 }
-	  	]
-	  },
-
-	  methods: {
-        shuffleLetters : function() {
+    <title></title>
+    <meta charset="utf-8">
+    <meta content="True" name="HandheldFriendly">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+        .spinner-holder {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            z-index: 100000;
         }
-	  },
+        
+        .spinner-holder.finished {
+            z-index: -10 !important;
+            background: none !important;
+        }
+        
+        div.spinner {
+            height: 24px;
+            width: 24px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin: -12px 0 0 -12px;
+        }
+        
+        div.spinner div {
+            width: 12%;
+            height: 26%;
+            background: #000;
+            position: absolute;
+            left: 44.5%;
+            top: 37%;
+            opacity: 0;
+            -webkit-border-radius: 50px;
+            -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            -webkit-animation: fade 1s linear infinite;
+        }
+        
+        div.spinner div.bar1 {
+            -webkit-transform: rotate(0deg) translate(0, -142%);
+            -webkit-animation-delay: 0s;
+        }
+        
+        div.spinner div.bar2 {
+            -webkit-transform: rotate(30deg) translate(0, -142%);
+            -webkit-animation-delay: -0.9167s;
+        }
+        
+        div.spinner div.bar3 {
+            -webkit-transform: rotate(60deg) translate(0, -142%);
+            -webkit-animation-delay: -0.833s;
+        }
+        
+        div.spinner div.bar4 {
+            -webkit-transform: rotate(90deg) translate(0, -142%);
+            -webkit-animation-delay: -0.7497s;
+        }
+        
+        div.spinner div.bar5 {
+            -webkit-transform: rotate(120deg) translate(0, -142%);
+            -webkit-animation-delay: -0.6664s;
+        }
+        
+        div.spinner div.bar6 {
+            -webkit-transform: rotate(150deg) translate(0, -142%);
+            -webkit-animation-delay: -0.5831s;
+        }
+        
+        div.spinner div.bar7 {
+            -webkit-transform: rotate(180deg) translate(0, -142%);
+            -webkit-animation-delay: -0.4998s;
+        }
+        
+        div.spinner div.bar8 {
+            -webkit-transform: rotate(210deg) translate(0, -142%);
+            -webkit-animation-delay: -0.4165s;
+        }
+        
+        div.spinner div.bar9 {
+            -webkit-transform: rotate(240deg) translate(0, -142%);
+            -webkit-animation-delay: -0.3332s;
+        }
+        
+        div.spinner div.bar10 {
+            -webkit-transform: rotate(270deg) translate(0, -142%);
+            -webkit-animation-delay: -0.2499s;
+        }
+        
+        div.spinner div.bar11 {
+            -webkit-transform: rotate(300deg) translate(0, -142%);
+            -webkit-animation-delay: -0.1666s;
+        }
+        
+        div.spinner div.bar12 {
+            -webkit-transform: rotate(330deg) translate(0, -142%);
+            -webkit-animation-delay: -0.0833s;
+        }
+        
+        div.spinner div.bar1 {
+            -webkit-transform: rotate(0deg) translate(0, -142%);
+            -webkit-animation-delay: 0s;
+        }
+        
+        div.spinner div.bar2 {
+            -webkit-transform: rotate(30deg) translate(0, -142%);
+            -webkit-animation-delay: -0.9167s;
+        }
+        
+        div.spinner div.bar3 {
+            -webkit-transform: rotate(60deg) translate(0, -142%);
+            -webkit-animation-delay: -0.833s;
+        }
+        
+        div.spinner div.bar4 {
+            -webkit-transform: rotate(90deg) translate(0, -142%);
+            -webkit-animation-delay: -0.75s;
+        }
+        
+        div.spinner div.bar5 {
+            -webkit-transform: rotate(120deg) translate(0, -142%);
+            -webkit-animation-delay: -0.667s;
+        }
+        
+        div.spinner div.bar6 {
+            -webkit-transform: rotate(150deg) translate(0, -142%);
+            -webkit-animation-delay: -0.5833s;
+        }
+        
+        div.spinner div.bar7 {
+            -webkit-transform: rotate(180deg) translate(0, -142%);
+            -webkit-animation-delay: -0.5s;
+        }
+        
+        div.spinner div.bar8 {
+            -webkit-transform: rotate(210deg) translate(0, -142%);
+            -webkit-animation-delay: -0.41667s;
+        }
+        
+        div.spinner div.bar9 {
+            -webkit-transform: rotate(240deg) translate(0, -142%);
+            -webkit-animation-delay: -0.333s;
+        }
+        
+        div.spinner div.bar10 {
+            -webkit-transform: rotate(270deg) translate(0, -142%);
+            -webkit-animation-delay: -0.25s;
+        }
+        
+        div.spinner div.bar11 {
+            -webkit-transform: rotate(300deg) translate(0, -142%);
+            -webkit-animation-delay: -0.1667s;
+        }
+        
+        div.spinner div.bar12 {
+            -webkit-transform: rotate(330deg) translate(0, -142%);
+            -webkit-animation-delay: -0.0833s;
+        }
+        
+        @-webkit-keyframes fade {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0.25;
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="name">
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
 
-	  computed:  {
-	  	formatCurrentWord: function() {
-			function joinLetters(el){
-			    return el.letter;
-			}
-	  		return this.currentWord.map(joinLetters).join('');
-	  	}
-	  }
-	})
-	</script>
-	
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/header.css" type="text/css">
+    <link rel="stylesheet" href="css/grid.css" type="text/css">
+    <link rel="stylesheet" href="css/buttons.css" type="text/css">
+    <link rel="stylesheet" href="css/keyboard.css" type="text/css">
+    <link rel="stylesheet" href="css/current-word.css" type="text/css">
+
+    <script src="js/vendor/vue.js"></script>
+    <script src="js/vendor/axios.min.js"></script>
+    <script src="js/vendor/modernizr.js"></script>
+
+</head>
+
+<body ontouchstart="">
+
+    <div class="spinner-holder" id="spinner">
+        <div class="spinner">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+            <div class="bar6"></div>
+            <div class="bar7"></div>
+            <div class="bar8"></div>
+            <div class="bar9"></div>
+            <div class="bar10"></div>
+            <div class="bar11"></div>
+            <div class="bar12"></div>
+        </div>
+    </div>
+
+    <div class="word-scramble-layout" id="vue-container" v-cloak :class="[]">
+        
+        <header>
+            <span>Score: <span>{{ current.score }}</span></span>
+            <span>Word Scramble</span></span>
+            <span>Level: <span>{{ current.level }}</span></span>
+        </header>
+
+        <component-grid></component-grid>
+        
+        <component-current-word></component-current-word>
+
+        <component-keyboard></component-keyboard>
+
+
+        <!-- <button>Shuffle Letters</button>
+ -->
+    </div>  
+
+    <script src="js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="js/polyfills.js"></script>
+    <script src="js/class.dm-storage.js"></script>
+    <script src="js/class.dm-timer.js"></script>
+
+    <script src="js/core-puzzle.js"></script>
+    <script src="js/core-puzzle-vue.js"></script>
+
+    <script src="js/wordscramble.js"></script>
+    <script src="js/wordscramble-vue.js"></script>
+
+    <script src="js/components/component-grid.js"></script>
+    <script src="js/components/component-cell.js"></script>
+    <script src="js/components/component-keys.js"></script>
+    <script src="js/components/component-key.js"></script>
+    <script src="js/components/component-current-word.js"></script>
+    <script src="js/components/component-enter-word.js"></script>
+
+    <script>
+        var LocalStorage = DMStorage;
+    </script>
+
+    <!-- client.js -->
+    <script>
+        var app = window.app || {};
+
+        (function() {
+
+            'use strict';
+
+            //  settings & config overrides
+            //app.settings.loadDeafultFromArchive = true;
+            app.settings.loadFromLocalStorage = true;
+ 
+        }());
+    </script>
+
+    <script>
+        app.config.variant = '';
+        app.settings.archiveRootPath = '../';
+    </script>
+    <script>
+        app.init({
+            "puzzle": {
+                "hasTimer": true
+            },
+            "user": {
+                "timer": {
+                    "id": "timer",
+                    "type": "Boolean",
+                    "default": true,
+                    "display": "Timer"
+                },
+                "soundskeyboard": {
+                    "id": "soundskeyboard",
+                    "type": "Boolean",
+                    "default": false,
+                    "display": "Keyboard Sounds"
+                }
+            }
+        }, "local");
+    </script>
+    <script>
+        document.getElementById('spinner').style.display = "none";
+    </script>
+
 </body>
+
 </html>

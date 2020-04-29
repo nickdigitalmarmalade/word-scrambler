@@ -1,0 +1,3 @@
+.current-word { display: flex; justify-content: center; align-items: center; }
+
+.word { background-color: #702c82; padding: 1rem; width: 100%; max-width: 30rem; border-radius: .5rem; color:#fff; font-size: 2.4rem; line-height: 2.4rem; margin:1rem 2rem; font-weight: bold; text-align:center; height: 4rem; letter-spacing: .5rem; }

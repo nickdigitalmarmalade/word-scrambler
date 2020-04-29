@@ -1,0 +1,117 @@
+{
+    "title": "DJ App",
+    "sections": {
+        "dj-app": {
+            "title": "DJ App",
+            "puzzles": [
+                "topographical",
+                "it-rsquo-s-a-start",
+                "line-of-work",
+                "making-amends",
+                "deductions-and-refunds",
+                "plug-it-in"
+            ]
+        }
+    },
+    "variants": {
+        "Daily Crossword": [
+            "topographical",
+            "it-rsquo-s-a-start",
+            "line-of-work",
+            "making-amends",
+            "deductions-and-refunds",
+            "plug-it-in"
+        ]
+    },
+    "puzzles": {
+        "blue-notes": {
+            "id": 3688,
+            "name": "Blue Notes",
+            "number": "0",
+            "setter": "By Amanda Rafkin & Ross Trudeau\/Edited by Mike Shenk",
+            "difficulty": "",
+            "variant": "Daily Crossword",
+            "tag": "daily-crossword",
+            "type": "crossword",
+            "date": "Tue, 21 Apr 2020 00:00:00",
+            "url": "..\/data\/2020\/04\/crossword-20200421-3688.json"
+        },
+        "topographical": {
+            "id": 3686,
+            "name": "Topographical",
+            "number": "0",
+            "setter": "By Kevin Patterson\/Edited by Mike Shenk",
+            "difficulty": "",
+            "variant": "Daily Crossword",
+            "tag": "daily-crossword",
+            "type": "crossword",
+            "date": "Mon, 20 Apr 2020 00:00:00",
+            "url": "..\/data\/2020\/04\/crossword-20200420-3686.json"
+        },
+        "it-rsquo-s-a-start": {
+            "id": 3684,
+            "name": "It&rsquo;s a Start",
+            "number": "0",
+            "setter": "by Seth Geltman & Jeff Chen\/Edited by Mike Shenk",
+            "difficulty": "",
+            "variant": "Daily Crossword",
+            "tag": "daily-crossword",
+            "type": "crossword",
+            "date": "Sat, 18 Apr 2020 00:00:00",
+            "url": "..\/data\/2020\/04\/crossword-20200418-3684.json"
+        },
+        "line-of-work": {
+            "id": 3680,
+            "name": "Line of Work",
+            "number": "0",
+            "setter": "By Mike Shenk\/Edited by Mike Shenk",
+            "difficulty": "",
+            "variant": "Daily Crossword",
+            "tag": "daily-crossword",
+            "type": "crossword",
+            "date": "Fri, 17 Apr 2020 00:00:00",
+            "url": "..\/data\/2020\/04\/crossword-20200417-3680.json"
+        },
+        "making-amends": {
+            "id": 3678,
+            "name": "Making Amends",
+            "number": "0",
+            "setter": "By Chase Dittrich\/Edited by Mike Shenk",
+            "difficulty": "",
+            "variant": "Daily Crossword",
+            "tag": "daily-crossword",
+            "type": "crossword",
+            "date": "Thu, 16 Apr 2020 00:00:00",
+            "url": "..\/data\/2020\/04\/crossword-20200416-3678.json"
+        },
+        "deductions-and-refunds": {
+            "id": 3676,
+            "name": "Deductions and Refunds",
+            "number": "0",
+            "setter": "By Sean Griffith\/Edited by Mike Shenk",
+            "difficulty": "",
+            "variant": "Daily Crossword",
+            "tag": "daily-crossword",
+            "type": "crossword",
+            "date": "Wed, 15 Apr 2020 00:00:00",
+            "url": "..\/data\/2020\/04\/crossword-20200415-3676.json"
+        },
+        "plug-it-in": {
+            "id": 3671,
+            "name": "Plug It In",
+            "number": "0",
+            "setter": "By Ross Trudeau\/Edited by Mike Shenk",
+            "difficulty": "",
+            "variant": "Daily Crossword",
+            "tag": "daily-crossword",
+            "type": "crossword",
+            "date": "Tue, 14 Apr 2020 00:00:00",
+            "url": "..\/data\/2020\/04\/crossword-20200414-3671.json"
+        }
+    },
+    "today": {
+        "Daily Crossword": [
+            "blue-notes"
+        ]
+    }
+}

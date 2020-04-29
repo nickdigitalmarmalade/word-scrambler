@@ -1,55 +1,29 @@
 
-
 Vue.component('component-grid', {
     template: `<div class="grid">
-                
-                    <table>
-                        <tr>
-                            <td><div>F</div></td>
-                            <td><div>A</div></td>
-                            <td><div>D</div></td>
-                            <td class="blank"><div></div></td>
-                            <td class="blank"><div></div></td>
-                            <td><div>S</div></td>
-                            <td><div>A</div></td>
-                            <td><div>D</div></td>
-                            <td class="blank"><div></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>S</div></td>
-                            <td><div>E</div></td>
-                            <td><div>A</div></td>
-                            <td class="blank"><div></div></td>
-                            <td class="blank"><div></div></td>
-                            <td><div>A</div></td>
-                            <td><div class="is-bonus">D</div></td>
-                            <td><div>S</div></td>
-                            <td class="blank"><div></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>S</div></td>
-                            <td><div>A</div></td>
-                            <td><div>F</div></td>
-                            <td><div>E</div></td>
-                            <td class="blank"><div></div></td>
-                            <td><div>F</div></td>
-                            <td><div class="is-bonus">A</div></td>
-                            <td><div>D</div></td>
-                            <td><div>E</div></td>
-                            <td><div>S</div></td>
-                        </tr>
-                    </table>
 
-                </div>`,
-    props: [],
-    computed: {
+	<table cellpadding="0" cellspacing="0" class="puzzle-table">
+		<tbody class="puzzleholder">
+			<tr v-for="(row, idx) in $root.puzzle.levels[0].gridstart">
 
-    },
-    methods: {
+				<td v-for="(cell, j) in row" 
+				:item="cell" 
+				:idx="[idx, j]" 
+				:key="cell.id"
+				:class="{ 'blank' : cell == '#'}">
+					<!-- <div>{{idx}}{{j}}</div> -->
+					
+					<div>
+					{{ $root.puzzle.levels[0].answers[idx][j] }}
+					</div>
 
-    },
-    created: function() {
+				</td>
 
+			</tr>
+		</tbody>
+	</table>
 
-    },
+    </div>`,
+
+    props: ['item'],
 });

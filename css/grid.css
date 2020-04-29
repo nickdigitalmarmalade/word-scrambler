@@ -9,3 +9,7 @@
 }
 
 .entered-letters { height: 4rem; width: 100%; max-width: 40rem; background-color: #f17b2d; border-radius: 5px; color:#fff; font-size: 3rem; text-align: center; margin: 2rem auto; display: flex; align-items: center; justify-content: center; letter-spacing: .5rem;  }
+.check-word { text-align: center;  margin: 2rem auto; }
+.feedback { height: 4rem; width: 100%; max-width: 40rem;  border-radius: 5px; color:#fff; font-size: 3rem; text-align: center; margin: 2rem auto; display: flex; align-items: center; justify-content: center; letter-spacing: .5rem; }
+.feedback--correct { background-color: lime; }
+.feedback--incorrect { background-color: red; }
