@@ -1,5 +1,6 @@
 .keyboard { display: flex; flex-direction: row; justify-content: center; align-items: center; }
-.keyboard .keys a { padding: 1rem; background-color: #702c82; margin:0 1rem; border-radius: .5rem; font-size: 2rem; width: 4rem; text-align: center; color:#fff; display: inline-block; }
+.keyboard .keys a { padding: 1rem; background-color: $purple; margin:0 1rem; border-radius: .5rem; font-size: 2rem; line-height: 2rem; width: 4rem; height: 4rem; text-align: center; color:#fff; display: inline-block; }
+.keyboard .keys a:hover { background-color: darken($purple, 10%); }
 
 .keyboard .keys .isLetterUsed {  opacity: .5; }
 

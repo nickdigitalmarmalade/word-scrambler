@@ -1,7 +1,7 @@
 
 Vue.component('component-grid', {
     template: `<div class="grid">
-					<div v-for="(word, idx) in wordsList">
+					<div class="words" v-for="(word, idx) in wordsList">
 						<component-word :word="word"></component-word>
 					</div>
 			    </div>`,
