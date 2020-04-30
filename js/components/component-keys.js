@@ -17,12 +17,16 @@ Vue.component('component-keyboard', {
                         <button @click="enterWord">Enter</button>
                     </div>
 
-                <div class="feedback feedback--correct" v-if="wordstatus === true">
+                <div class="feedback feedback--correct" v-if="wordstatus === 'new-word'">
                     Woohoo!!
                 </div>
-                <div class="feedback feedback--incorrect" v-if="wordstatus === false">
-                    Fail!!
+                <div class="feedback feedback--info" v-if="wordstatus === 'already-found'">
+                    World already found!
                 </div>
+                <div class="feedback feedback--incorrect" v-if="wordstatus === 'wrong'">
+                    Incorrect word!
+                </div>
+
             </div>`,
     props: [],
     computed: {
@@ -45,13 +49,16 @@ Vue.component('component-keyboard', {
 
                     if(!this.isAlreadyFound()){
                         this.addScore();
-                        this.wordstatus = true;
+                        this.wordstatus = "new-word";
+                        this.$root.puzzle.current.found.push(this.$root.getCurrentWord);
+                    } else {
+                        this.wordstatus = "already-found";
                     }
+
                     
-                    this.$root.puzzle.current.found.push(this.$root.getCurrentWord);
 
                 } else {
-                    this.wordstatus = false;
+                    this.wordstatus = "wrong";
                 }
 
                 this.$root.puzzle.current.word = [];

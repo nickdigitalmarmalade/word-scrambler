@@ -382,7 +382,7 @@ var app = window.app || {};
 
         app.helpers.clearAllCellsNeedingCorrection();
 
-        app.helpers.scrollToClue();
+       // app.helpers.scrollToClue();
     };
 
     app.vue.methods.resetGrid = function () {

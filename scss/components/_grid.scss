@@ -1,0 +1,46 @@
+.grid { width: 100%; border-collapse: collapse; }
+.grid table { margin: 2rem auto; display: none; }
+.grid tr {  }
+.grid td { }
+.grid .blank div { border: none; background-color: transparent; }
+.grid .is-bonus { background-color: gold; }
+
+.grid table div {border:1px solid #666; border-radius: 3px; width: 4rem; height: 4rem;  margin: .25rem; padding: .5rem; background-color:#fff; text-align: center; font-size: 2rem;  line-height: 2;
+}
+
+.entered-letters { height: 4rem; width: 100%; max-width: 40rem; background-color: #f17b2d; border-radius: 5px; color:#fff; font-size: 3rem; text-align: center; margin: 2rem auto; display: flex; align-items: center; justify-content: center; letter-spacing: .5rem;  }
+
+.check-word { text-align: center;  margin: 2rem auto; }
+
+.isWordFound { }
+.isWordFound span { background-color: gold; animation: scaling .5s 1 forwards; }
+
+.isWordFound span:nth-child(1) { animation-delay: .5s }
+.isWordFound span:nth-child(2) { animation-delay: 1s }
+.isWordFound span:nth-child(3) { animation-delay: 1.5s }
+.isWordFound span:nth-child(4) { animation-delay: 2s }
+.isWordFound span:nth-child(5) { animation-delay: 2.5s }
+
+
+.list span { transition: all 1s; }
+
+@keyframes scaling {
+    0% { transform: scale(1.0); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1.0); }
+}
+
+
+.feedback { height: 4rem; width: 100%; color:#fff; font-size: 2rem; text-align: center; margin: 2rem auto 0 auto; display: flex; align-items: center; justify-content: center; letter-spacing: .5rem; }
+.feedback--correct { background-color: #a9c000; }
+.feedback--incorrect { background-color: red; }
+.feedback--info { background-color: #52c7eb; }
+
+
+.grid { margin-top: 1rem; }
+.list  { margin:0 auto; width: 100%; max-width: 25rem; }
+.list span { border: 1px solid gold; display: inline-block; width: 3rem; height: 3rem; margin: .25rem; padding: .5rem; text-align: center; font-size: 2rem; line-height: 2rem; border-radius: .25rem; }
+
+.current-word { display: flex; justify-content: center; align-items: center; }
+
+.word { background-color: #702c82; padding: 1rem; width: 100%; max-width: 30rem; border-radius: .5rem; color:#fff; font-size: 2.4rem; line-height: 2.4rem; margin:1rem 2rem; font-weight: bold; text-align:center; height: 4rem; letter-spacing: .5rem; }

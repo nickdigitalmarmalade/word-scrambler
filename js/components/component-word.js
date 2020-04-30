@@ -1,15 +1,16 @@
 Vue.component('component-word', {
-    template: `<div :class="{ isWordFound: isWordFound }">
-                  {{ wordFound}}
+    template: `<div class="list" :class="{ isWordFound: isWordFound }">
+                    
+                    {{ wordFound}}
                     
                     <div v-if="isWordFound">
                         <template v-for="(letter, idx) in word.length">
-                           {{ word[letter - 1] }}
+                           <span>{{ word[letter - 1] }}</span>
                         </template>
                     </div>
                     <div v-else>
                         <template v-for="(letter, idx) in word.length">
-                           #
+                           <span></span>
                         </template>
                     </div>
 

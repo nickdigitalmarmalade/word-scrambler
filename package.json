@@ -1,0 +1,20 @@
+{
+  "name": "JJ_CSS_Build",
+  "version": "1.0.0",
+  "description": "Light gulp file to compile, compress and source map CSS",
+  "author": "JJDM",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "autoprefixer": "^9.6.0",
+    "browser-sync": "^2.26.7",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-connect-php": "^1.0.3",
+    "gulp-postcss": "^8.0.0",
+    "gulp-ruby-sass": "^4.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
+  },
+  "dependencies": {}
+}

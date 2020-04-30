@@ -1,6 +1,0 @@
-.word-scramble-layout { border: .1rem solid #f17b2d; }
-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem;  text-align: center; 
-	background-color: #f17b2d; color:#fff;}
-
-header span { font-size: 2rem; }
-header span span { color: #702c82; }

@@ -1,0 +1,10 @@
+header { display: flex; justify-content: center; align-items: center; padding: 1rem;  text-align: center; position: relative;
+	background-color: #f17b2d; color:#fff;
+
+	 span { font-size: 1.6rem; padding: 0 1rem; }
+	 span span { color: #702c82; font-weight:bold; padding: 0; }
+
+ 	.game-stats { position: absolute; top: 1rem; right: 4rem; }
+ 	.btn-pause { position: absolute; top: 1rem; right: 1rem; }
+
+}
