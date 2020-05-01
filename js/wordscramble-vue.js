@@ -32,6 +32,8 @@ var app = window.app || {};
     };
 
     app.vue.data.modes.grid = true;
+    app.vue.data.paused = false;
+
 
     /*  ----------------------  */
     /*    Vue Global Methods    */
@@ -74,6 +76,18 @@ var app = window.app || {};
 
         return obj;
     };
+
+    app.vue.methods.pauseGame = function () {
+        app.timer.pause();
+        app.vue.data.paused = true;
+    }
+
+    app.vue.methods.resumeGame = function () {
+        app.timer.resume();
+        app.vue.data.paused = false;
+    }
+
+
 
     /*  -----------------------  */
     /*    Vue Global Watchers    */

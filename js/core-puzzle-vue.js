@@ -164,7 +164,7 @@ var app = window.app || {};
 
     app.vue.computed.timerDisplay = function () {
 
-        var duration = app.vue.data.user.time;
+        var duration = (60 * 5) - app.vue.data.user.time;
 
         var days = Math.floor(duration / (60 * 60 * 24));
         duration -= days * (60 * 60 * 24);

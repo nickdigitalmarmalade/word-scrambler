@@ -32,9 +32,14 @@ var DMTimer;
         if (self.status !== 'active') {
             self.timer = setInterval(
                 function () {
-                    self.count++;
-                    if (self.callback !== null) {
-                        self.callback(self.count);
+
+                    if(self.count === 300){
+                        self.stop();
+                    } else {
+                        self.count++;
+                        if (self.callback !== null) {
+                            self.callback(self.count);
+                        }
                     }
                 },
                 1000

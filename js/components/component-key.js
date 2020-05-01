@@ -21,6 +21,11 @@ Vue.component('component-keyboard-key', {
                 // Remove item.
                 this.$root.puzzle.current.word.splice(this.$root.puzzle.current.word.findIndex(x => x.id === letter.id), 1);
             }
+
+            if (app.media.supports.audio && app.vue.data.user.settings.soundskeyboard) {
+                new Audio('mp3/tock.mp3').play();
+            }
+
         }
 
     },
