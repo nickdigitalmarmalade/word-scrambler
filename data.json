@@ -21,31 +21,11 @@
       "levels":[
          {
             "startingletters": "ASDFE",
-            "correctwords":["FAD", "SAD", "SEA", "ADS", "SAFE", "FADES"],
-            "gridstart": [
-               [ "", "", "", "#", "#", "", "", "", "#", "#" ],
-               [ "", "", "", "#", "#", "", "", "", "#", "#" ],
-               [ "", "", "", "", "#", "", "", "", "", "" ]
-            ],
-            "answers": [
-               [ "F", "A", "D", "", "", "S", "A", "D", "", "" ],
-               [ "S", "E", "A", "", "", "A", "D", "S", "", "" ],
-               [ "S", "A", "F", "E", "", "F", "A", "D", "E", "S" ]
-            ]
+            "correctwords":["FAD", "SAD", "SEA", "ADS", "SAFE", "FADES"]
          },
          {
-            "startingletters": "ABCDE",
-            "correctwords":["FAD", "SAD", "SEA", "ADS", "SAFE", "FADES"],
-            "gridstart": [
-               [ "", "", "", "", "", "", "", "", "", "" ],
-               [ "", "", "", "", "", "", "", "", "", "" ],
-               [ "", "", "", "", "", "", "", "", "", "" ]
-            ],
-            "answers": [
-               [ "F", "A", "D", "", "", "S", "A", "D", "", "" ],
-               [ "S", "E", "A", "", "", "A", "D", "S", "", "" ],
-               [ "S", "A", "F", "E", "", "F", "A", "D", "E", "S" ]
-            ]
+            "startingletters": "EFUBZ",
+            "correctwords":["LOL", "TEST", "FOO", "BAR"]
          }
       ],
       "gridsize":{

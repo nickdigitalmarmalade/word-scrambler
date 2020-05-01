@@ -10,7 +10,7 @@ Vue.component('component-grid', {
     computed: {
 
         wordsList: function() {
-            return this.$root.puzzle.levels[0].correctwords;
+            return this.$root.puzzle.levels[this.$root.puzzle.current.level].correctwords;
         }
     }
 });

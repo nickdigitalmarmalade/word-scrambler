@@ -21,7 +21,7 @@ Vue.component('component-keyboard', {
                     Woohoo!!
                 </div>
                 <div class="feedback feedback--info" v-if="wordstatus === 'already-found'">
-                    World already found!
+                    Word already found!
                 </div>
                 <div class="feedback feedback--incorrect" v-if="wordstatus === 'wrong'">
                     Incorrect word!
@@ -31,7 +31,7 @@ Vue.component('component-keyboard', {
     props: [],
     computed: {
         splitLetters: function() {
-            return this.$root.puzzle.levels[0].startingletters.split("");
+            return this.$root.puzzle.levels[this.$root.puzzle.current.level].startingletters.split("");
         }
     },
     methods: {
@@ -72,7 +72,7 @@ Vue.component('component-keyboard', {
             return this.$root.puzzle.current.found.includes(this.$root.getCurrentWord);
         },
         isCorrectWord: function(){
-            return this.$root.puzzle.levels[0].correctwords.includes(this.$root.getCurrentWord)
+            return this.$root.puzzle.levels[this.$root.puzzle.current.level].correctwords.includes(this.$root.getCurrentWord)
         },
         showFeedback: function(){
             var self = this;
@@ -88,6 +88,6 @@ Vue.component('component-keyboard', {
         }
       },
     created: function() {
-        console.log(this.$root.puzzle.levels[0].startingletters);
+        console.log(this.$root.puzzle.levels[this.$root.puzzle.current.level].startingletters);
     },
 });

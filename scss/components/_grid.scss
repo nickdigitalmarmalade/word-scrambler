@@ -4,7 +4,7 @@
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 40rem;
+    max-width: 50rem;
 	margin: 2rem auto;
  }
 
@@ -44,8 +44,8 @@
 
 .grid { margin-top: 1rem; }
 .list  { margin:0 auto; width: 100%; max-width: 25rem; }
-.list span { border: 1px solid gold; display: inline-block; width: 3rem; height: 3rem; margin: .25rem; padding: .5rem; text-align: center; font-size: 2rem; line-height: 2rem; border-radius: .25rem; }
+.list span { border: 1px solid gold; display: inline-block; width: 4rem; height: 4rem; margin: .25rem; padding: .5rem; text-align: center; font-size: 3rem; line-height: 3rem; border-radius: .25rem; }
 
 .current-word { display: flex; justify-content: center; align-items: center; }
 
-.word { background-color: #702c82; padding: 1rem; width: 100%; max-width: 30rem; border-radius: .5rem; color:#fff; font-size: 2.4rem; line-height: 2.4rem; margin:1rem 2rem; font-weight: bold; text-align:center; height: 4rem; letter-spacing: .5rem; }
+.word { background-color: #702c82; padding: 1rem; width: 100%; max-width: 30rem; border-radius: .5rem; color:#fff; font-size: 2.4rem; line-height: 1.8rem; margin:1rem 2rem; font-weight: bold; text-align:center; height: 4rem; letter-spacing: .5rem; }
