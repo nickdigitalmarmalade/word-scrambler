@@ -24,8 +24,12 @@
             "correctwords":["FAD", "SAD", "SEA", "ADS", "SAFE", "FADES"]
          },
          {
-            "startingletters": "EFUBZ",
-            "correctwords":["LOL", "TEST", "FOO", "BAR"]
+            "startingletters": "DRWON",
+            "correctwords":["WORD", "DOWN"]
+         },
+         {
+            "startingletters": "ESTBO",
+            "correctwords":["BEST"]
          }
       ],
       "gridsize":{

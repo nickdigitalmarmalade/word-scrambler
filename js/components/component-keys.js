@@ -17,6 +17,10 @@ Vue.component('component-keyboard', {
                         <button @click="enterWord">Enter</button>
                     </div>
 
+                    <div>
+                        <button @click="skipLevel">Skip level</button>
+                    </div>
+
                 <div class="feedback feedback--correct" v-if="wordstatus === 'new-word'">
                     Woohoo!!
                 </div>
@@ -81,6 +85,14 @@ Vue.component('component-keyboard', {
                  self.wordstatus = null;
             }, 1500);
         },
+        skipLevel: function(){
+
+            if(this.$root.puzzle.current.level > 1){
+                this.$root.puzzle.current.level = 0;
+            } else {
+                this.$root.puzzle.current.level++
+            }
+        }
     },
     data() {
         return {
