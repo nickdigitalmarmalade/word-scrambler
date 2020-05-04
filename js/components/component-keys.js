@@ -18,7 +18,7 @@ Vue.component('component-keyboard', {
                     </div>
 
                     <div>
-                        <button @click="skipLevel">Skip level</button>
+                        <button @click="nextLevel">Next level</button>
                     </div>
 
                 <div class="feedback feedback--correct" v-if="wordstatus === 'new-word'">
@@ -39,15 +39,11 @@ Vue.component('component-keyboard', {
         }
     },
     methods: {
-
         addScore: function(){
             this.$root.current.score += this.$root.getCurrentWord.length * 100;
         },
         enterWord: function(){
             if(this.$root.getCurrentWord != ''){
-
-                //console.log("entered: " + this.$root.getCurrentWord);
-                //console.log(this.$root.puzzle.levels[0].correctwords);
 
                 if(this.isCorrectWord()){
 
@@ -55,11 +51,25 @@ Vue.component('component-keyboard', {
                         this.addScore();
                         this.wordstatus = "new-word";
                         this.$root.puzzle.current.found.push(this.$root.getCurrentWord);
+
+                        if (app.media.supports.audio && app.vue.data.user.settings.soundskeyboard) {
+                            new Audio('mp3/success.mp3').play();
+                        }
+
                     } else {
                         this.wordstatus = "already-found";
                     }
 
-                    
+                    // if level completed, advance to next one.
+                    if(this.$root.puzzle.current.found.sort().toString() === this.$root.puzzle.levels[this.$root.puzzle.current.level].correctwords.sort().toString()){
+                        
+                        var self = this;
+
+                        setTimeout(function(){
+                            self.nextLevel();
+                            //self.$root.puzzle.current.found = [];
+                        }, 1500);
+                    }
 
                 } else {
                     this.wordstatus = "wrong";
@@ -67,9 +77,7 @@ Vue.component('component-keyboard', {
 
                 this.$root.puzzle.current.word = [];
                 this.showFeedback();
-
             }
-            // TODO: Check if word correct and not already used before.
         },
 
         isAlreadyFound: function(){
@@ -85,7 +93,7 @@ Vue.component('component-keyboard', {
                  self.wordstatus = null;
             }, 1500);
         },
-        skipLevel: function(){
+        nextLevel: function(){
 
             if(this.$root.puzzle.current.level > 1){
                 this.$root.puzzle.current.level = 0;
@@ -98,8 +106,8 @@ Vue.component('component-keyboard', {
         return {
            wordstatus: null
         }
-      },
-    created: function() {
-        console.log(this.$root.puzzle.levels[this.$root.puzzle.current.level].startingletters);
     },
+    created: function() {
+
+    }
 });

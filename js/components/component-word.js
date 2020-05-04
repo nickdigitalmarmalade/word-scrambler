@@ -10,7 +10,7 @@ Vue.component('component-word', {
                     </div>
                     <div v-else>
                         <template v-for="(letter, idx) in word.length">
-                           <span></span>
+                           <span></span> 
                         </template>
                     </div>
 
@@ -31,6 +31,8 @@ Vue.component('component-word', {
         wordFound() {
             if(this.$root.puzzle.current.found.includes(this.word)){
                 this.isWordFound = true;
+            } else {
+                this.isWordFound = false;
             }
         }
     },

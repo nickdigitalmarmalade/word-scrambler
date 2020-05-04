@@ -1,4 +1,4 @@
-.word-scramble-layout { position: relative;}
+.word-scramble-layout { position: relative; width: 100%; max-width: 800px; margin: 0 auto; border: .2rem solid $orange; }
 
 .grid { width: 100%;
 	display: flex;
