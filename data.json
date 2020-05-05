@@ -21,7 +21,7 @@
       "levels":[
          {
             "startingletters": "ASDFE",
-            "correctwords":["FAD", "SAD"]
+            "correctwords":["FAD", "SAD", "SEA", "ADS", "SAFE", "FADES"]
          },
          {
             "startingletters": "DRWON",

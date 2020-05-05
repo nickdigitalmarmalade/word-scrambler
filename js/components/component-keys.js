@@ -17,10 +17,6 @@ Vue.component('component-keyboard', {
                         <button @click="enterWord">Enter</button>
                     </div>
 
-                    <div>
-                        <button @click="nextLevel">Next level</button>
-                    </div>
-
                 <div class="feedback feedback--correct" v-if="wordstatus === 'new-word'">
                     Woohoo!!
                 </div>
