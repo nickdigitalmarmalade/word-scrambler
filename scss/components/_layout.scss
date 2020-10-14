@@ -1,0 +1,7 @@
+/*! Layout */
+
+.word-scramble-layout { height: 100vh; }
+
+@media(min-width: $md-width) and (min-height: $md-width){
+	.word-scramble-layout { height: auto; }
+}

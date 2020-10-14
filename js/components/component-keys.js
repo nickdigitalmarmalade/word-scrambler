@@ -18,13 +18,13 @@ Vue.component('component-keyboard', {
                     </div>
 
                 <div class="feedback feedback--correct" v-if="wordstatus === 'new-word'">
-                    Woohoo!!
+                    Correct, well done!
                 </div>
                 <div class="feedback feedback--info" v-if="wordstatus === 'already-found'">
                     Word already found!
                 </div>
                 <div class="feedback feedback--incorrect" v-if="wordstatus === 'wrong'">
-                    Incorrect word!
+                    Incorrect, try again.
                 </div>
 
             </div>`,
@@ -55,20 +55,29 @@ Vue.component('component-keyboard', {
                     } else {
                         this.wordstatus = "already-found";
                     }
+						
+						var userCorrect = this.$root.puzzle.current.found.length;
+						var totalCorrect = this.$root.puzzle.levels[this.$root.puzzle.current.level].correctwords.length;
 
-                    // if level completed, advance to next one.
-                    if(this.$root.puzzle.current.found.sort().toString() === this.$root.puzzle.levels[this.$root.puzzle.current.level].correctwords.sort().toString()){
-                        
-                        var self = this;
+						if(userCorrect === totalCorrect){
+							
+							console.log("level completed");
+							
+							var self = this;
 
-                        setTimeout(function(){
-                            self.nextLevel();
-                            //self.$root.puzzle.current.found = [];
-                        }, 1500);
-                    }
+							setTimeout(function(){
+								self.nextLevel();
+								// TODO - self.bonusTime();
+							}, 1500);
+						}
 
                 } else {
                     this.wordstatus = "wrong";
+
+                    if (app.media.supports.audio && app.vue.data.user.settings.soundskeyboard) {
+                        new Audio('mp3/error.mp3').play();
+                    }
+
                 }
 
                 this.$root.puzzle.current.word = [];
@@ -89,13 +98,27 @@ Vue.component('component-keyboard', {
                  self.wordstatus = null;
             }, 1500);
         },
+		bonusTime: function(){
+
+		},
         nextLevel: function(){
 
-            if(this.$root.puzzle.current.level > 1){
-                this.$root.puzzle.current.level = 0;
+			//console.log(this.$root.puzzle.current.level);
+			//console.log(this.$root.getLevelCount);
+
+            if(this.$root.puzzle.current.level ==  this.$root.getLevelCount - 1){
+               
+			   // Show completition.
+				app.vue.model.showModal('completion')
+			   
             } else {
-                this.$root.puzzle.current.level++
+                this.$root.puzzle.current.level++;
+				this.$root.puzzle.current.found = [];
+				
+				//app.timer.addBonus();
+				//app.helpers.saveUserTime();
             }
+
         }
     },
     data() {

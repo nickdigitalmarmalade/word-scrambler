@@ -892,6 +892,7 @@ var app = window.app || {};
             }
             app.timer = new DMTimer();
             app.timer.callback = app.helpers.puzzleUpdate;
+
         }
         //app.helpers.initialiseAnalytics();
         if (!app.vue.model.isCompletedWithoutErrors) {

@@ -1,0 +1,5 @@
+
+.fail { position: absolute; top: 0; left: 0; bottom: 0; right:0; background: orange; color: #fff; text-align: center; z-index: 20; padding: 4rem; }
+.fail h1 { font-size: 3.2rem; text-transform: uppercase; }
+.fail.active { display: block; }
+.fail-wrapper { display: flex; justify-content: center;  flex-direction: column; height: 100%; align-items: center; }

@@ -27,6 +27,18 @@ var DMTimer;
         return this.count;
     };
 
+    DMTimer.prototype.addBonus = function () {
+        var self = this;
+        
+
+
+		self.count += 1000;
+		console.log("Bonus Added");
+        
+                    
+
+    };
+
     DMTimer.prototype.startTimer = function () {
         var self = this;
         if (self.status !== 'active') {
@@ -35,6 +47,11 @@ var DMTimer;
 
                     if(self.count === 300){
                         self.stop();
+						console.log('stop');
+						
+						// Show try again modal here.
+						
+						
                     } else {
                         self.count++;
                         if (self.callback !== null) {

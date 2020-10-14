@@ -1,0 +1,6 @@
+
+.feedback { height: 4rem; width: 100%; color:#fff; font-size: 2rem; text-align: center; margin: 2rem auto 0 auto; display: flex; align-items: center; justify-content: center; position: absolute; top: 2rem; }
+
+.feedback--correct { background-color: #a9c000; }
+.feedback--incorrect { background-color: red; }
+.feedback--info { background-color: #52c7eb; }
