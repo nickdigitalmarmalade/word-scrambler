@@ -387,11 +387,13 @@ var app = window.app || {};
 
     app.vue.methods.resetGrid = function () {
         app.helpers.resetUserState();
-        this.setActiveClue(1);
+        //this.setActiveClue(1);
         if (app.vue.data.config.hasTimer) {
             app.timer.restart();
         }
+		
         this.hideModal();
+		this.$root.puzzle.current.found = [];
     };
 
     app.vue.methods.revealGrid = function () {

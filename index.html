@@ -213,12 +213,11 @@
         
         <header>
 
-            <span>Word Scramble</span>
-
             <div class="game-stats">
-                <span>Score: <span>{{ current.score }}</span></span>
+<!--                 <span class="game-name">Word Scramble</span> -->
+                <span class="score">Score: <span>{{ current.score }}</span></span>
                 <span>Level: <span>{{ puzzle.current.level }}</span></span>
-                <span v-if="user.settings.timer">Timer: <span v-html="timerDisplay"></span></span>
+                <span v-if="user.settings.timer"><span v-html="timerDisplay"></span></span>
             </div>
 
             <a href="#" class="btn-pause" @click="pauseGame()">
@@ -260,9 +259,15 @@
                         <input type="checkbox" id="setting-timer" v-model="user.settings.timer">
                         <label for="setting-timer">Timer</label>
                     </li>
-                <li class="custom-checkbox">
+                    <li class="custom-checkbox">
                         <input type="checkbox" id="setting-soundskeyboard" v-model="user.settings.soundskeyboard">
                         <label for="setting-soundskeyboard">Sounds Effects</label>
+                    </li>
+                    <li>
+                        <a href="#0" class="config__link" @click.stop.prevent="showModal('help')">Help</a>
+                    </li>
+                    <li >
+                        <a href="#0" class="config__link" @click.stop.prevent="showModal('reset-grid')">Reset</a>
                     </li>
                 </ul>
             </div>
@@ -281,6 +286,62 @@
     </div>
 
 
+            <div class="modal-bg" :class="[{'modal-bg--visible': modals.visible.length > 0}]" @click.stop.prevent="hideModal()"></div>
+
+            <div class="modal" :class="[{'modal--visible': modals.visible.indexOf('reset-grid') >= 0}]">
+                <a href="#" class="close-button" @click.stop.prevent="hideModal('reset-grid')">
+                    <svg class="close-button__icon">
+                <use xlink:href="#iconClose"></use>
+            </svg>
+                </a>
+                <p class="modal__question">
+                Are you sure you want to reset the game?
+                </p>
+                <div class="modal__options">
+                    <a href="#" @click.stop.prevent="resetGrid">Yes</a>
+                    <a href="#" @click.stop.prevent="hideModal('reset-grid')">No</a>
+                </div>
+            </div>
+
+            <!-- HELP SCREEN -->
+
+            <div class="modal--full" :class="[{'active': modals.visible.indexOf('help') >= 0}]">
+            <h1>HELP</h1>
+
+            <div class="help__copy">
+                <p>
+                    Help copy to go here. Explain the game mechanics here.
+                </p>
+            </div>
+
+            <a href="#" class="btn btn--secondary"  @click="resumeGame()">Play</a>
+             
+            </div>
+
+
+            <!-- HELP SCREEN -->
+
+            <!-- COMPLETION SCREEN -->
+           <div class="completion" :class="[{'active': modals.visible.indexOf('completion') >= 0}]">
+
+            <div class="completion-wrapper">
+                   
+                   <h1>Congratulations, you did it!</h1>
+
+                   <a href="#" class="btn btn--secondary" @click.stop.prevent="resetGrid">Restart</a>
+                </div>
+            </div>
+            <!-- COMPLETION SCREEN -->
+
+
+
+
+            <!-- FAIL SCREEN -->
+            <div class="fail" v-if="user.time === 300 && modals.visible.indexOf('completion') === -1">
+               <h1>Oh no, you've run out of time!</h1>
+               <a href="#" class="btn" @click.stop.prevent="resetGrid">Restart</a>
+            </div>
+            <!-- FAIL SCREEN -->
 
     </div>  
 

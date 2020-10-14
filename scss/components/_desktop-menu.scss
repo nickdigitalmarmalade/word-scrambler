@@ -1,8 +1,8 @@
 @media only screen and (max-width: 767px)  {
-  .desktop-menu { display: none; }
+//  .desktop-menu { display: none; }
 }
-@media only screen and (min-width: 768px)  {
-  .desktop-menu { display: flex; height: 100%; max-width: 106rem; margin: 0 auto; justify-content: space-between; padding: 0 2rem; align-items: center; }
+//@media only screen and (min-width: 768px)  {
+  .desktop-menu { display: flex; /*height: 100%;*/ max-width: 106rem; margin: 0 auto; justify-content: space-between; padding: 0 2rem; align-items: center; }
   .desktop-menu__dropdown-button,
   .desktop-menu__timer,
   .desktop-menu__settings { /*display: flex; justify-content: center; align-items: center;*/ color: inherit; text-decoration: none; position: relative; transition: all .15s ease; /*height: 100%; */ }
@@ -17,8 +17,8 @@
   .desktop-menu__dropdown-button:hover { background: $mobile-menu-bg;
     //.desktop-menu__dropdown { pointer-events: all; opacity: 1; top: 100%; }  
   }
-  .desktop-menu__print { display: inline-block; font-size: 1.4rem; color: #333; text-transform: uppercase; }
-}
+
+//}
 
 @media only screen and (min-width: 1060px)  {
   .desktop-menu { padding: 0 3rem; }

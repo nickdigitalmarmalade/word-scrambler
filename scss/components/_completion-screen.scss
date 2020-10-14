@@ -2,26 +2,15 @@
 .completion { overflow: hidden; display: none;
   .close-button { top: 0; right: 0; transform: none;}
 }
-.completion__content { position: relative; flex-grow: 1; text-align: center; }
-.completion__icon { margin: 0 0 1rem; }
-.completion__all-games { color: $primary-colour; font-size: 1.6rem; padding: 1.5rem 0; text-decoration: underline; }
-
-.completion__more { background: #fafafa; margin: 1.5rem 0 0; padding: 1.3rem 3rem;
-  h3 { font-size: 1.2rem; color: #333; text-transform: uppercase; margin: 0 0 1.5rem; }
-}
-
-@media only screen and (max-width: 767px)  {
-  .completion { position: fixed; top: 0; left: 0; background: #fff; z-index: 20; width: 100%; height: 100%; display: none; flex-direction: column; padding: 6rem 0 0; overflow-y: auto; overflow-x: hidden; }
-  .completion__title { font-size: 3.2rem; margin: 0 0 .5rem; position: relative; z-index: 3000; }
-  .completion__message { font-size: 1.6rem; margin: 0 0 2.5rem; position: relative; z-index: 3000; }
-  .completion__button {  position: relative; z-index: 3000; 
-    .button { margin: 0 auto; }
-  }
 
 
-}
+.completion { position: absolute; top: 0; left: 0; bottom: 0; right:0; background: orange; color: #fff; text-align: center; z-index: 20; padding: 4rem; }
+.completion h1 { font-size: 3.2rem; text-transform: uppercase; }
+.completion.active { display: block; }
+.completion-wrapper { display: flex; justify-content: center;  flex-direction: column; height: 100%; align-items: center; }
+
 @media only screen and (min-width: 768px)  {
-  .completion { position: fixed; top: 50%; left: 50%; background: #fff; z-index: 20; padding: 4rem 0 0; width: 48rem; height: 48rem; transform: translate(-50%,-50%); display: none; flex-direction: column; }
+
   .completion__title { font-size: 4.6rem; margin: 0 0 .5rem; position: relative; z-index: 3000; }
   .completion__message { font-size: 2.2rem; margin: 0 0 2.5rem; position: relative; z-index: 3000; }
   .completion__button {  position: relative; z-index: 3000; 

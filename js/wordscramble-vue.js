@@ -27,6 +27,12 @@ var app = window.app || {};
         
     };
 
+
+    app.vue.computed.getLevelCount = function () {
+		return this.puzzle.levels.length
+    };
+
+
     app.vue.created = function () {
 
     };
@@ -58,7 +64,8 @@ var app = window.app || {};
                 level: 0,
                 score: 0,
                 found: []
-            }
+            },
+			levels : source.copy.levels.length
         };
 
         obj.copy.title = source.copy.title;
@@ -85,6 +92,9 @@ var app = window.app || {};
     app.vue.methods.resumeGame = function () {
         app.timer.resume();
         app.vue.data.paused = false;
+		
+		app.vue.methods.hideModal('help');
+		//app.vue.methods.hideModal('help');
     }
 
 
