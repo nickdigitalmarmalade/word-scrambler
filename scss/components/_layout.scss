@@ -1,7 +1,18 @@
 /*! Layout */
+* { outline: 0 none; }
 
 .word-scramble-layout { height: 100vh; }
+.word-scramble-layout { position: relative; width: 100%; margin: 0 auto; padding: 2rem 2.5rem; }
 
-@media(min-width: $md-width) and (min-height: $md-width){
-	.word-scramble-layout { height: auto; }
+html {  }
+
+body { color: $grey; background-color: $teal; height: 100vh; display: flex; justify-content: center; align-items: center; }
+
+.word-scramble-layout { background: $yellow url('../img/pattern.svg') repeat center center;}
+
+@media(min-width: $md-width) and (min-height: $min-height){
+
+	.word-scramble-layout {  width: 64rem; height: 59rem; box-shadow: .2rem .2rem 1rem rgba(0, 0, 0, 0.1); 
+		border-radius: 1.6rem; }
+
 }

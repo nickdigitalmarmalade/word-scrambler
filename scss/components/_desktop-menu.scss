@@ -6,7 +6,7 @@
   .desktop-menu__dropdown-button,
   .desktop-menu__timer,
   .desktop-menu__settings { /*display: flex; justify-content: center; align-items: center;*/ color: inherit; text-decoration: none; position: relative; transition: all .15s ease; /*height: 100%; */ }
-  .desktop-menu__settings { position:absolute; top: 1rem; left: 1rem }
+  //.desktop-menu__settings { position:absolute; top: 1rem; left: 1rem }
   .desktop-menu__timer { font-size: 1.4rem; }
   .desktop-menu__dropdown { position: absolute; left: 50%; top: 120%; min-width: 100%; width: 13rem; text-align: center; transform: translateX(-50%); background: #ddd; z-index: 10; pointer-events: none; opacity: 0; transition: all .15s ease; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     a { display: block; font-size: 1.4rem; padding: 1rem 1rem; text-decoration: none; color: inherit; background: $mobile-menu-bg; margin-top: .1rem; transition: all .15s ease;

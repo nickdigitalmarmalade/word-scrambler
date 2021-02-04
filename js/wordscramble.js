@@ -37,14 +37,20 @@ var app = window.app || {};
      * Start puzzle
      */
     app.helpers.puzzleStart = function (vm) {
-        app.timer.start(app.vue.data.user.time);
+		
+        
 		
 		console.log("Puzzle started");
 		
 		// TODO - make 300 a var.
 		if(app.vue.data.user.time === 300 & app.vue.data.config.hasTimer){
 			app.helpers.resetUserState();
-			app.timer.restart();  
+			app.timer.restart(); 
+			//app.timer.start(app.vue.data.user.time);
+        }
+		
+		if(app.vue.data.config.hasTimer){
+			app.timer.start(app.vue.data.user.time);
         }
 		
     };

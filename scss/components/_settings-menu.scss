@@ -1,14 +1,14 @@
 
-@media only screen and (max-width: 767px)  {
-  .settings-dropdown { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: #fff; z-index: 20; padding: 0 2rem 2rem; display: none; 
-    .active & { display: block; }
-  }
-  .settings-dropdown-bg { display: none;
-    .active & { display: block; }
-  }
+
+.settings-dropdown { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: $grey; z-index: 20; padding: 0 2.4rem 2.4rem; visibility:hidden; opacity:0; transition: all .5s ease-in-out; 
+&.active { visibility: visible; opacity:1; }
 }
+.settings-dropdown-bg { display: none;
+ &.active { display: block; }
+}
+
 .config { margin: 0; padding: 0; list-style: none; text-align: left;  }
-.config li { position: relative; font-size: 1.8rem; margin: 0; padding: 10px 0; border-top: .2rem solid $orange;
+.config li { color: #fff; position: relative; font-size: 1.8rem; margin: 0; padding: 10px 0; 
   &:hover { color: #000; }
 }
 
@@ -18,21 +18,33 @@
 .settings-dropdown__icons { display: flex; margin: 0 0 2rem; }
 
 .settings-dropdown__header {  margin: 0 -2rem 2rem; padding: 2rem 2rem 1.9rem; position: relative;
-  h2 {font-weight: 400; font-size: 1.8rem; text-align: center; }
+  h2 { font-family: $amatic; text-transform: uppercase; color: #fff; font-weight: 400; font-size: 3.6rem; text-align: center; }
 }
 
-.close-button { position: absolute; display: flex; height: 4rem; width: 4rem; align-items: center; justify-content: center; top: 50%; right: 1rem; transform: translateY(-50%);
-  &__icon { width: 2rem; height: 2rem;}
+.config li { font-family: $amatic; font-size: 2.4rem; text-transform: uppercase; }
+
+.close-button { color:#fff; position: absolute; display: flex; height: 4rem; width: 4rem; align-items: center; justify-content: center; top: 50%; right: 1rem; transform: translateY(-50%);
+  &__icon { width: 2rem; height: 2rem; }
 }
 
-@media only screen and (min-width: 768px)  {
-  .settings-dropdown-bg { background: rgba(0,0,0,.2); z-index: 19; position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; 
-    .active & { display: block; }
-  }
-  .settings-dropdown { position: absolute; top: -1.4rem;
-    left: -1.4rem; background: #fff; z-index: 20; padding: 0 2rem 2rem; width: 30rem; box-shadow: 0 0 3rem rgba(0,0,0,.2); display: none; 
-    .active & { display: block; }
-    .close-button { left: 1rem; right: auto; }
-  }
-  .settings-dropdown__header { padding: 1.4rem 2rem 1.3rem; }
+// @media only screen and (min-width: 768px)  {
+//   .settings-dropdown-bg { background: rgba(0,0,0,.2); z-index: 19; position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; 
+//     .active & { display: block; }
+//   }
+//   .settings-dropdown { position: absolute; top: -1.4rem;
+//     left: -1.4rem; background: #fff; z-index: 20; padding: 0 2rem 2rem; width: 30rem; box-shadow: 0 0 3rem rgba(0,0,0,.2); display: none; 
+//     .active & { display: block; }
+//     .close-button { left: 1rem; right: auto; }
+//   }
+//   .settings-dropdown__header { padding: 1.4rem 2rem 1.3rem; }
+// }
+
+
+
+
+
+@media(min-width: $md-width) and (min-height: $min-height){
+	//.desktop-menu__settings { width: 100%; height: 100%; position: absolute; top: 0; right: 0;bottom:0; left:0;  border-radius: 1.6rem; } 
+
+	.settings-dropdown { position: absolute; border-radius: 1.6rem; }
 }
