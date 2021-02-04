@@ -12,7 +12,7 @@
 .modal-bg--visible,
 .modal--visible { display: flex; }
 
-.paused { display:none; position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background-color: $orange; }
+.paused { display:none; position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background-color: $yellow; }
 
 .paused.active { display: block; }
 
@@ -22,9 +22,10 @@
 .paused button { background-color: #fff; color: $orange; }
 
 
-.modal--full { display: none; }
+.modal--full {  position: absolute; top: 0; visibility:hidden; opacity:0; transition: all .5s ease-in-out; }
 
-.modal--full.active { position: absolute; top:0; right:0; bottom:0; left:0;  width: 100%; height: 100%; padding: 4rem; background-color: $primary-colour; color: #fff; display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 100; }
+.modal--full.active { position: absolute; top:0; right:0; bottom:0; left:0;  width: 100%; height: 100%; padding: 4rem; background-color: $yellow; color: #fff; display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 100; 
+visibility: visible; opacity:1;}
 
 .help__copy { padding: 4rem 0; }
 .help__copy p { font-size: 1.8rem; }

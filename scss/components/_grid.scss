@@ -1,17 +1,10 @@
-.word-scramble-layout { position: relative; width: 100%; max-width: 800px; margin: 0 auto; border: .2rem solid $orange; }
 
-.grid { width: 100%;
-	display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 50rem;
-	margin: 2rem auto;
- }
 
-.grid .words { flex: 0 0 50%;}
+//.grid { width: 100%; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; width: 100%; max-width: 50rem; margin: 2rem auto; }
 
+//.grid .words { flex: 0 0 50%;}
+
+.grid { padding: 2.5rem 0; }
 .grid .blank div { border: none; background-color: transparent; }
 .grid .is-bonus { background-color: gold; }
 
@@ -20,7 +13,8 @@
 .check-word { text-align: center;  margin: 2rem auto; }
 
 .isWordFound { }
-.isWordFound span { background-color: gold; animation: scaling .5s 1 forwards; }
+.list span { color:#fff; }
+.list.isWordFound span { background-color: $teal; animation: scaling .5s 1 forwards; }
 
 .isWordFound span:nth-child(1) { animation-delay: .25s }
 .isWordFound span:nth-child(2) { animation-delay: .5s }
@@ -31,23 +25,27 @@
 .isWordFound span:nth-child(7) { animation-delay: 1.75s }
 .isWordFound span:nth-child(8) { animation-delay: 2s }
 
-
-.list span { transition: all 1s; }
-
 @keyframes scaling {
     0% { transform: scale(1.0); }
     50% { transform: scale(1.4); }
     100% { transform: scale(1.0); }
 }
 
-.grid { margin-top: 4rem; }
-.list  { margin:0 auto; width: 100%; max-width: 25rem; }
-.list span { border: 1px solid gold; display: inline-block; width: 3rem; height: 3rem; margin: .25rem; padding: .5rem; text-align: center; font-size: 2rem; line-height: 2rem; border-radius: .25rem; }
+.list  { margin:0 auto; width: 100%; /* max-width: 25rem; */ }
+.list span { font-family: $alfa-slab; font-size: 3rem; background-color: #FAE898; display: inline-block; width: 3.6rem; height: 3.6rem; margin: .25rem; padding: .5rem; text-align: center; border-radius: .5rem; transition: all 1s; line-height: 3rem;}
 
-@media(min-width: $md-width){
-    .list span {  width: 4rem; height: 4rem; font-size: 3rem; line-height: 3rem; }
+@media(min-width: 375px){
+	.list span { font-size: 3rem;  width: 4.8rem; height: 4.8rem; line-height: 4rem;}
 }
 
 .current-word { display: flex; justify-content: center; align-items: center; }
 
-.word { background-color: #702c82; padding: 1rem; width: 100%; max-width: 30rem; border-radius: .5rem; color:#fff; font-size: 2.4rem; line-height: 1.8rem; margin:1rem 2rem; font-weight: bold; text-align:center; height: 4rem; letter-spacing: .5rem; }
+.word { background-color: #FAE898; padding: 1rem; width: 100%; max-width: 30rem; border-radius: .5rem; color:#fff; font-size: 2.4rem; line-height: 1.8rem;  font-weight: bold; text-align:center; height: 5rem; letter-spacing: .5rem; }
+
+
+@media(min-width: $md-width) and (min-height: $min-height){
+	.list span {  width: 4rem; height: 4rem; font-size: 3rem; line-height: 3rem; }
+	.grid { position: relative; left: 50%; transform: translateX(-50%); width: auto; display: inline-block; }
+
+}
+  

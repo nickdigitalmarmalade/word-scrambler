@@ -1,0 +1,66 @@
+/*! Start Screen */
+
+.start-screen {
+	    height: 100%; display: flex; flex-direction: column; padding: 2rem 1.6rem; background: $yellow url('../img/pattern.svg') repeat center center; justify-content: center; align-items: center; position: absolute; top:0; right:0; bottom:0; left:0; overflow: hidden; z-index:10; }
+.start-screen__letters { list-style: none; margin: 0 0 1rem 0; padding:0; display: flex; justify-content: center; align-items: center;  }
+.start-screen__letter { font-family: $alfa-slab; color: $grey; font-weight: 700; font-size: 4.8rem; text-align: center; text-transform: uppercase;  width: 7rem; height: 7rem; background-color: #fff; border-radius: .8rem;}
+
+.start-screen__letter:nth-child(1) { transform: rotate(-15deg) translateY(-100vh); transition: all .5s ease-in-out; transition-delay: .3s; position:relative; left: 14rem; 
+
+      animation: animateW 1s ease-in-out 1 forwards; animation-delay: 2.4s;
+} 
+.start-screen__letter:nth-child(2) { transform: rotate(5deg) translateY(-100vh); transition: all .5s ease-in-out; transition-delay: .4s; position:relative; left: 14rem;
+  animation: animateO 1s ease-in-out 1 forwards; animation-delay: 2.6s;
+} 
+.start-screen__letter:nth-child(3) { transform: rotate(-4.84deg) translateY(-100vh); transition: all .5s ease-in-out; transition-delay: .1s; position:relative; left: -14rem; 
+  animation: animateR 1s ease-in-out 1 forwards; animation-delay: 2.8s;
+} 
+.start-screen__letter:nth-child(4) { transform: rotate(7.43deg) translateY(-100vh); transition: all .5s ease-in-out; transition-delay: .2s; position:relative; left: -14rem; 
+  animation: animateD 1s ease-in-out 1 forwards; animation-delay: 2.5s;
+}
+
+// Order - rdwo
+
+.animate-start .start-screen__letter:nth-child(1) { transform: rotate(-15deg) translateY(0); }
+.animate-start .start-screen__letter:nth-child(2) { transform: rotate(5deg) translateY(0); }
+.animate-start .start-screen__letter:nth-child(3) { transform: rotate(-4.84deg) translateY(0); }
+.animate-start .start-screen__letter:nth-child(4) { transform: rotate(7.43deg) translateY(0); }
+
+@keyframes animateW {
+    0% {left: 14rem; }
+    100% { left: 0; }
+}
+
+@keyframes animateO {
+    0% {left: 14rem; }
+    100% { left: 0; }
+}
+
+@keyframes animateR {
+    0% {left: -14rem; }
+    100% { left: 0; }
+}
+
+@keyframes animateD {
+    0% {left: -14rem; }
+    100% { left: 0; }
+}
+
+
+.start-screen__title { visibility: hidden; opacity: 0; transition: opacity 0.3s, visibility 0.3s; transition-delay: 2s;   font-family: $amatic; color: $grey; font-weight: 700; font-size: 4.8rem; text-align: center; text-transform: uppercase; }
+
+.animate-start  .start-screen__title  {  visibility: visible; opacity: 1; }
+
+.animate-start .btn-start {  visibility: visible; opacity: 1;}
+
+.btn-start { visibility: hidden; opacity: 0; transition: opacity 0.3s, visibility 0.3s; transition-delay: 2.5s;  
+
+	display: flex; flex-direction: row; align-items: center; padding: 1.6rem 4.8rem; background-color: $teal; box-shadow: 0 0 1rem rgba(45, 59, 65, 0.2); border-radius: 3.2rem; margin-top: 8rem;  }
+
+.btn-start span { font-family: $public-sans; font-style: normal; font-weight: 800; font-size: 2.4rem; text-align: center; letter-spacing: 0.15em; color: #fff; }
+
+@media(min-width: $md-width) and (min-height: $min-height){
+	.start-screen { border-radius: 1.6rem; }
+}
+
+.start-screen { display: none; }
