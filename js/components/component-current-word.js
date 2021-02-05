@@ -1,11 +1,19 @@
 Vue.component('component-current-word', {
     template: `<div class="current-word">
-                    <div class="word">
-                        {{ formatCurrentWord }}
+
+                    <div class="current-word-wrapper">
+                        <div class="word">
+                            {{ formatCurrentWord }}
+                        </div>
+
+                        <a href="#0" class="icon-button" @click.stop="enterWord">
+                            <svg viewBox="0 0 12 12" class="icon">
+                              <use xlink:href="#iconConfirm"></use>
+                            </svg>
+                            <span class="icon-button__text visuallyhidden">Settings</span>
+                        </a>
                     </div>
 
-                    <button @click="enterWord">Ent</button>
-                    
                     <div class="feedback feedback--correct" 
                         :class="{'test' : wordstatus === 'new-word'}">
                             Correct, well done!
