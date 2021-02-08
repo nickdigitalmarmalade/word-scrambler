@@ -1,9 +1,31 @@
 
-.feedback { width: auto; color:#fff; font-size: 2rem; text-align: center; margin: 0 auto; display: flex; align-items: center; justify-content: center; position: absolute; top: 0; left: 2rem; right: 2rem; padding: 1rem; box-shadow: 0px 0px 10px rgba(45, 59, 65, 0.2); transform: translateY(-100vh); transition: all .25s ease-in-out; }
+.feedback { font-size: 3.6rem; font-family: $amatic; text-decoration: uppercase; font-weight: 700;  color:#fff; text-align: center; margin: 0 auto; display: flex; align-items: center; justify-content: center; position: absolute; top: 0; left: 2rem; right: 2rem; padding: 2rem 3rem; border-radius: 8px; box-shadow: 0px 0px 10px rgba(45, 59, 65, 0.2); transform: translateY(-100vh); transition: all .25s ease-in-out; height: 8.6rem; }
 
 
 .feedback--correct { background-color: $feedback-correct ; }
 .feedback--incorrect { background-color: $feedback-incorrect; }
-.feedback--info { background-color: #52c7eb; }
+.feedback--info { background-color: $feedback-incorrect; }
 
-.feedback.test { transform: translateY(5rem); transition: all .5s ease-in-out;}
+.feedback.active { transform: translateY(2rem); transition: all .5s ease-in-out;}
+
+.left-icon { width: 2.6rem; height: 4rem; position: absolute; top:50%; left: 4rem; transform: translateY(-50%) scale(1.0);  transition: all .25s ease-in-out; opacity:0; background: url('../img/left-lines.svg'); background-size: 2.7rem 4.3rem; }
+
+.right-icon { width: 2.6rem; height: 4rem; /* border:1px solid #fff; */ position: absolute; top:50%; right: 4rem; transform: translateY(-50%) scale(1.0); transition: all .25s ease-in-out; opacity:0; background: url('../img/right-lines.svg'); background-size: 2.7rem 4.3rem; }
+
+.active .left-icon,
+.active .right-icon { /* transform: translateY(-50%) scale(4.0); transition-delay: 1s; */ 
+	animation: scaleMe .65s 1 forwards; animation-delay: .5s;
+}
+
+
+@keyframes scaleMe {
+    0% {
+        transform: translateY(-50%) scale(1.0); opacity: 0;
+    }
+    50% {
+    	transform: translateY(-50%) scale(1.5);
+    }
+    100% {
+        transform: translateY(-50%) scale(1.0); opacity: 1;
+    }
+}

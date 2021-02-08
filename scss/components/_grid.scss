@@ -4,7 +4,7 @@
 
 //.grid .words { flex: 0 0 50%;}
 
-.grid { padding: 2.5rem 0; }
+.grid { padding: 2.5rem 0; margin-left: -.4rem; margin-right: -.4rem; }
 .grid .blank div { border: none; background-color: transparent; }
 .grid .is-bonus { background-color: gold; }
 
@@ -32,7 +32,7 @@
 }
 
 .list  { margin:0 auto; width: 100%; /* max-width: 25rem; */ }
-.list span { font-family: $alfa-slab; font-size: 3rem; background-color: #FAE898; display: inline-block; width: 3.6rem; height: 3.6rem; margin: .25rem; padding: .5rem; text-align: center; border-radius: .5rem; transition: all 1s; line-height: 3rem;}
+.list span { font-family: $alfa-slab; font-size: 3rem; background-color: #FAE898; display: inline-block; width: 3.6rem; height: 3.6rem; margin: .4rem; padding: .4rem; text-align: center; border-radius: .5rem; transition: all 1s; line-height: 3rem;}
 
 @media(min-width: 375px){
 	.list span { font-size: 3rem;  width: 4.8rem; height: 4.8rem; line-height: 4rem;}
@@ -44,8 +44,7 @@
 .current-word-wrapper .icon { width: 1.2rem; height: 1.2rem; }
 .current-word { }
 
-.word { background-color: #FAE898; padding: 1rem; width: 100%; border-radius: .5rem; color:#fff; font-size: 2.4rem; line-height: 1.8rem;  font-weight: bold; text-align:center; height: 5rem; letter-spacing: .5rem; }
-
+.word {  font-family: $alfa-slab; background-color: #FAE898; padding: 1rem; width: 100%; border-radius: .5rem; color: $grey; font-size: 3rem; text-align:center; height: 5rem; letter-spacing: .5rem; display: flex; justify-content: center; align-items: center;  }
 
 @media(min-width: $md-width) and (min-height: $min-height){
 	.list span {  width: 4rem; height: 4rem; font-size: 3rem; line-height: 3rem; }

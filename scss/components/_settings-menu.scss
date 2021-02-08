@@ -23,8 +23,9 @@
 
 .config li { font-family: $amatic; font-size: 2.4rem; text-transform: uppercase; }
 
-.close-button { color:#fff; position: absolute; display: flex; height: 4rem; width: 4rem; align-items: center; justify-content: center; top: 50%; right: 1rem; transform: translateY(-50%);
-  &__icon { width: 2rem; height: 2rem; }
+.close-button { color:#fff; position: absolute; display: flex; height: 3.2rem; width: 3.2rem; align-items: center; justify-content: center; top: 50%; right: 1rem; transform: translateY(-50%);
+  //&__icon { width: 2rem; height: 2rem; }
+  .icon { height: 3.2rem; width: 3.2rem; }
 }
 
 // @media only screen and (min-width: 768px)  {
