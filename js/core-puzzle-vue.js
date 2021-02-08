@@ -259,7 +259,7 @@ var app = window.app || {};
             app.vue.data.show.tooltip = 1;
             app.vue.methods.hideModal('help');
             app.storagePuzzletype.set('help', true);
-            app.helpers.puzzleStart();
+           // app.helpers.puzzleStart();
         }
     };
 

@@ -97,7 +97,9 @@ var app = window.app || {};
 		//app.vue.methods.hideModal('help');
     }
 
-
+    app.vue.methods.startGame = function () {
+        app.helpers.puzzleStart();
+    };
 
     /*  -----------------------  */
     /*    Vue Global Watchers    */

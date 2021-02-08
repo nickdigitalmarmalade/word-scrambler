@@ -15,18 +15,20 @@ Vue.component('component-current-word', {
                     </div>
 
                     <div class="feedback feedback--correct" 
-                        :class="{'test' : wordstatus === 'new-word'}">
-                            Correct, well done!
+                        :class="{'active' : wordstatus === 'new-word'}">
+                            <div class="left-icon"></div>
+                            Wonderful!
+                            <div class="right-icon"></div>
                     </div>
 
                     <div class="feedback feedback--info" 
-                        :class="{'test' : wordstatus === 'already-found'}">
-                        Word already found!
+                        :class="{'active' : wordstatus === 'already-found'}">
+                        Repeated word!
                     </div>
 
                     <div class="feedback feedback--incorrect" 
-                        :class="{'test' : wordstatus === 'wrong'}">
-                        Incorrect, try again.
+                        :class="{'active' : wordstatus === 'wrong'}">
+                        Nope... try again!
                     </div>
 
                 </div>`,
@@ -102,7 +104,8 @@ Vue.component('component-current-word', {
 
             setTimeout(function(){
                  self.wordstatus = null;
-            }, 1500);
+            //}, 1500);
+            }, 2000);
         },
         bonusTime: function(){
 

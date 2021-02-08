@@ -1,7 +1,7 @@
 header { display: flex; justify-content: space-between; align-items: center; 
- 	p { color: $grey; font-family: $amatic; font-size: 3rem; }
+ 	p { color: $grey; font-family: $amatic; font-size: 3rem; font-weight: 700; }
+ 	span { font-weight: 700; }
 }
 
-
-.icon-button { width: 3.6rem; height: 3.6rem; background-color: $orange; border-radius: 50%;  display: flex; justify-content: center; align-items: center;  }
+.icon-button { width: 3.6rem; height: 3.6rem; background-color: $orange; border-radius: 50%;  display: flex; justify-content: center; align-items: center; filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.1)); }
 .icon { width: 1.8rem; height: 1.8rem; }

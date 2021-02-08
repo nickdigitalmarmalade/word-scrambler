@@ -185,10 +185,9 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
 
     <script src="js/vendor/vue.js"></script>
     <script src="js/vendor/axios.min.js"></script>
@@ -227,7 +226,7 @@
 
             <h1 class="start-screen__title">Scrambler</h1>
 
-            <a href="#" class="btn-start">
+            <a href="#" class="btn-start" @click.stop="startGame">
                 <span>S</span>
                 <span>T</span>
                 <span>A</span>
@@ -235,182 +234,205 @@
                 <span>T</span>
             </a>
         </div>
-        
-        <header>
 
-            <p>Level: <span>{{ puzzle.current.level }}</span></p>
-            <p class="score">Score: <span>{{ current.score }}</span></p>
-            
-       
+        <div class="game-screen">
+            <header>
+                <p>Level <span>{{ puzzle.current.level }}</span></p>
+                <p class="score">Score <span>{{ current.score }}</span></p>
+
                 <a href="#0" class="icon-button" @click.stop="showSet('settings', true)">
                     <svg viewBox="0 0 512 512" class="icon">
                       <use xlink:href="#iconSettings"></use>
                     </svg>
                     <span class="icon-button__text visuallyhidden">Settings</span>
                 </a>
-        </header>
+            </header>
 
-        <component-grid></component-grid>
-        <component-current-word></component-current-word>
-        <component-keyboard></component-keyboard>
-        
-
-
-        <div>
-
-            <a href="#" class="btn-pause" 
-                @click="pauseGame()" 
-                v-if="user.settings.timer"
-            >
-                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="pause-circle" class="svg-inline--fa fa-pause-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#fff" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm96-280v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16zm-112 0v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16z"></path></svg>
-
-iconPause
+            <component-grid></component-grid>
+            <component-current-word></component-current-word>
+            <component-keyboard></component-keyboard>
+            
+            <div class="actions-bar">
 
 
-            </a>
+                <div class="timer-wrapper" v-if="user.settings.timer">
+                    <svg viewBox="0 0 24 24" class="icon">
+                      <use xlink:href="#iconTimer"></use>
+                    </svg>           
 
-            <p v-if="user.settings.timer"><span v-html="timerDisplay"></span></p>
+                    <p><span v-html="timerDisplay"></span></p>     
+                </div>
 
-            <component-buttons></component-buttons>
-        </div>
-
-
-        <!-- <button>Shuffle Letters</button>
- -->
-
-    <div class="desktop-menu">
-
-
-        <div class="settings-dropdown-bg" :class="[
-            {'active' : show.settings},
-        ]"  
-        @click.stop.prevent="wrapperClicked"></div>
-
-        <div class="settings-dropdown" 
-            :class="[{'active' : show.settings},
-        ]" >
-            <div class="settings-dropdown__header">
-                <h2>Settings</h2>
-                <a href="#0" class="close-button" @click.stop.prevent="resetActions">
-                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="times-circle" class="svg-inline--fa fa-times-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"></path></svg>
+                <a href="#0" class="icon-button"
+                    @click="pauseGame()" 
+                    v-if="user.settings.timer"
+                >
+                    <svg viewBox="0 0 18 19" class="icon">
+                      <use xlink:href="#iconPause"></use>
+                    </svg>
+                    <span class="icon-button__text visuallyhidden">Pause</span>
                 </a>
-            </div>
-            <div class="settings-dropdown__options">
-                <ul class="config">
-                    <li class="custom-checkbox">
-                        <input type="checkbox" id="setting-timer" v-model="user.settings.timer">
-                        <label for="setting-timer">Timer</label>
-                    </li>
-                    <li class="custom-checkbox">
-                        <input type="checkbox" id="setting-soundskeyboard" v-model="user.settings.soundskeyboard">
-                        <label for="setting-soundskeyboard">Sounds Effects</label>
-                    </li>
-                    <li>
-                        <a href="#0" class="config__link" @click.stop.prevent="showModal('help')">Help</a>
-                    </li>
-                    <li >
-                        <a href="#0" class="config__link" @click.stop.prevent="showModal('reset-grid')">Reset</a>
-                    </li>
-                </ul>
+
+                <component-buttons></component-buttons>
             </div>
 
+
+
+            <div class="desktop-menu">
+
+
+                <div class="settings-dropdown-bg" :class="[
+                    {'active' : show.settings},
+                ]"  
+                @click.stop.prevent="wrapperClicked"></div>
+
+                <div class="settings-dropdown" 
+                    :class="[{'active' : show.settings},
+                ]" >
+                    <div class="settings-dropdown__header">
+                        <h2>Settings</h2>
+                        <a href="#0" class="close-button" @click.stop.prevent="resetActions">
+                            <svg viewBox="0 0 32 32" class="icon">
+                              <use xlink:href="#iconSettingsClose"></use>
+                            </svg>
+                            <span class="icon-button__text visuallyhidden">Close</span>
+                        </a>
+                    </div>
+                    <div class="settings-dropdown__options">
+                        <ul class="config">
+                            <li class="custom-checkbox">
+                                <input type="checkbox" id="setting-timer" v-model="user.settings.timer">
+                                <label for="setting-timer">Timer</label>
+                            </li>
+                            <li class="custom-checkbox">
+                                <input type="checkbox" id="setting-soundskeyboard" v-model="user.settings.soundskeyboard">
+                                <label for="setting-soundskeyboard">Sounds Effects</label>
+                            </li>
+                            <li>
+                                <a href="#0" class="config__link" @click.stop.prevent="showModal('help')">Help</a>
+                            </li>
+                            <li >
+                                <a href="#0" class="config__link" @click.stop.prevent="showModal('reset-grid')">Reset</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        <div class="paused" :class="[{'active' : paused}]">
+            <div class="inner-wrapper">
+
+
+                <div class="timer-wrapper">
+                    <svg viewBox="0 0 24 24" class="icon">
+                      <use xlink:href="#iconTimer"></use>
+                    </svg>           
+
+                    <p v-if="user.settings.timer"><span v-html="timerDisplay"></span></p>     
+                </div>
+
+                <h1>Game paused</h1>
+
+                <a href="#0" class="icon-button" @click.stop="resumeGame()">
+                    <svg viewBox="0 0 16 17" class="icon">
+                      <use xlink:href="#iconPlay"></use>
+                    </svg>
+                    <span class="icon-button__text visuallyhidden">Resume</span>
+                </a>
+
+
+            </div>
         </div>
 
-    </div>
 
+        <div class="modal-bg" :class="[{'modal-bg--visible': modals.visible.length > 0}]" @click.stop.prevent="hideModal()"></div>
 
-    <div class="paused" :class="[{'active' : paused}]">
-        <div class="inner-wrapper">
-
-
-            <div class="timer-wrapper">
-                <svg viewBox="0 0 24 24" class="icon">
-                  <use xlink:href="#iconTimer"></use>
-                </svg>           
-
-                <p v-if="user.settings.timer"><span v-html="timerDisplay"></span></p>     
+        <div class="modal" :class="[{'modal--visible': modals.visible.indexOf('reset-grid') >= 0}]">
+            <a href="#" class="close-button" @click.stop.prevent="hideModal('reset-grid')">
+                <svg class="close-button__icon">
+            <use xlink:href="#iconClose"></use>
+        </svg>
+            </a>
+            <p class="modal__question">
+            Are you sure you want to reset the game?
+            </p>
+            <div class="modal__options">
+                <a href="#" @click.stop.prevent="resetGrid">Yes</a>
+                <a href="#" @click.stop.prevent="hideModal('reset-grid')">No</a>
             </div>
+        </div>
 
-            <h1>Game paused</h1>
+        <!-- HELP SCREEN -->
+        <div class="modal--full help" :class="[{'active': modals.visible.indexOf('help') >= 0}]">
 
-            <a href="#0" class="icon-button" @click.stop="resumeGame()">
-                <svg viewBox="0 0 16 17" class="icon">
-                  <use xlink:href="#iconPlay"></use>
+            <a href="#0" class="close-button" @click.stop.prevent="hideModal('help')">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <use xlink:href="#iconClose"></use>
                 </svg>
-                <span class="icon-button__text visuallyhidden">Resume</span>
+                <span class="icon-button__text visuallyhidden">Close Help</span>
             </a>
 
+            <h1>HELP</h1>
 
+            <div class="help__copy">
+                <p>
+                 Exercitation aliqua duis pariatur fugiat sunt incididunt consectetur eiusmod magna aliqua aliquip deserunt. Ex qui magna est anim officia velit est pariatur et deserunt nulla. Ullamco cupidatat id dolore anim aute.</p>
+
+                <p>Exercitation aliqua duis pariatur fugiat sunt incididunt consectetur eiusmod magna aliqua aliquip deserunt. Ex qui magna est anim officia velit est pariatur et deserunt nulla. Ullamco cupidatat id dolore anim aute.</p>
+
+                <p>Exercitation aliqua duis pariatur fugiat sunt incididunt consectetur eiusmod magna aliqua aliquip deserunt. Ex qui magna est anim officia velit est pariatur et deserunt nulla. Ullamco cupidatat id dolore anim aute.</p>
+            </div>
         </div>
-    </div>
+        <!-- HELP SCREEN -->
 
+        <!-- COMPLETION SCREEN -->
+       <div class="completion" :class="[{'active': modals.visible.indexOf('completion') >= 0}]">
 
-    <div class="modal-bg" :class="[{'modal-bg--visible': modals.visible.length > 0}]" @click.stop.prevent="hideModal()"></div>
+        <div class="completion-wrapper">
+               
+               <h1>Congratulations, you did it!</h1>
 
-    <div class="modal" :class="[{'modal--visible': modals.visible.indexOf('reset-grid') >= 0}]">
-        <a href="#" class="close-button" @click.stop.prevent="hideModal('reset-grid')">
-            <svg class="close-button__icon">
-        <use xlink:href="#iconClose"></use>
-    </svg>
-        </a>
-        <p class="modal__question">
-        Are you sure you want to reset the game?
-        </p>
-        <div class="modal__options">
-            <a href="#" @click.stop.prevent="resetGrid">Yes</a>
-            <a href="#" @click.stop.prevent="hideModal('reset-grid')">No</a>
+               <a href="#" class="btn btn--secondary" @click.stop.prevent="resetGrid">Restart</a>
+            </div>
         </div>
-    </div>
+        <!-- COMPLETION SCREEN -->
 
-    <!-- HELP SCREEN -->
-    <div class="modal--full help" :class="[{'active': modals.visible.indexOf('help') >= 0}]">
 
-        <a href="#0" class="close-button" @click.stop.prevent="hideModal('help')">
-            <svg viewBox="0 0 24 24" class="icon">
-              <use xlink:href="#iconClose"></use>
-            </svg>
-            <span class="icon-button__text visuallyhidden">Close Help</span>
-        </a>
-
-        <h1>HELP</h1>
-
-        <div class="help__copy">
-            <p>
-             Exercitation aliqua duis pariatur fugiat sunt incididunt consectetur eiusmod magna aliqua aliquip deserunt. Ex qui magna est anim officia velit est pariatur et deserunt nulla. Ullamco cupidatat id dolore anim aute.</p>
-
-            <p>Exercitation aliqua duis pariatur fugiat sunt incididunt consectetur eiusmod magna aliqua aliquip deserunt. Ex qui magna est anim officia velit est pariatur et deserunt nulla. Ullamco cupidatat id dolore anim aute.</p>
-
-            <p>Exercitation aliqua duis pariatur fugiat sunt incididunt consectetur eiusmod magna aliqua aliquip deserunt. Ex qui magna est anim officia velit est pariatur et deserunt nulla. Ullamco cupidatat id dolore anim aute.</p>
+        <!-- FAIL SCREEN -->
+        <div class="fail" v-if="user.time === 300 && user.settings.timer && modals.visible.indexOf('completion') === -1">
+           <h1>Oh no, you've run out of time!</h1>
+           <a href="#" class="btn" @click.stop.prevent="resetGrid">Restart</a>
         </div>
-    </div>
-    <!-- HELP SCREEN -->
+        <!-- FAIL SCREEN -->
 
-    <!-- COMPLETION SCREEN -->
-   <div class="completion" :class="[{'active': modals.visible.indexOf('completion') >= 0}]">
-
-    <div class="completion-wrapper">
-           
-           <h1>Congratulations, you did it!</h1>
-
-           <a href="#" class="btn btn--secondary" @click.stop.prevent="resetGrid">Restart</a>
-        </div>
-    </div>
-    <!-- COMPLETION SCREEN -->
-
-
-    <!-- FAIL SCREEN -->
-    <div class="fail" v-if="user.time === 300 && user.settings.timer && modals.visible.indexOf('completion') === -1">
-       <h1>Oh no, you've run out of time!</h1>
-       <a href="#" class="btn" @click.stop.prevent="resetGrid">Restart</a>
-    </div>
-    <!-- FAIL SCREEN -->
-
-    </div>  
-
+        </div>  
+</div>
 
 
     <svg style="display: none;">
-        
+
+        <symbol id="iconSettingsClose" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 28.5C22.6274 28.5 28 23.1274 28 16.5C28 9.87258 22.6274 4.5 16 4.5C9.37258 4.5 4 9.87258 4 16.5C4 23.1274 9.37258 28.5 16 28.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 12.5L12 20.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 20.5L12 12.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <symbol id="iconPause" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0)">
+            <path d="M14.3381 0.51343C13.3678 0.672172 12.343 0.748736 11.1124 0.754389C11.0452 0.754581 10.98 0.762118 10.9089 0.777346C10.4541 0.813571 10.1194 1.11829 10.0917 1.52602C10.061 1.9731 10.0303 4.47563 9.99518 7.37351C9.94269 11.6456 9.87763 16.9623 9.78957 17.5973C9.76865 17.7455 9.7911 17.8842 9.85578 18.0095C9.95927 18.3132 10.2348 18.5 10.5838 18.5C10.6168 18.5 10.6511 18.4985 10.6869 18.4952C12.0946 18.3573 13.3073 18.3155 14.449 18.3651C14.6367 18.3716 14.7982 18.3356 14.9387 18.2542C15.2192 18.1251 15.3898 17.8849 15.4084 17.5918C15.4816 16.4299 15.4849 1.56498 15.4849 1.41539C15.4849 1.1965 15.3971 1.00073 15.2359 0.859371C15.0364 0.589994 14.6931 0.455056 14.3381 0.51343ZM13.7423 2.18887L13.7413 2.87252C13.7376 5.97052 13.7267 14.9406 13.6996 16.7652C13.0212 16.7609 12.3385 16.7826 11.6066 16.8337C11.6478 15.7256 11.6812 12.4186 11.7222 8.03367C11.7455 5.53075 11.7677 3.14724 11.7878 2.32408C12.467 2.30447 13.1116 2.25986 13.7423 2.18887Z" fill="#2D3B41"/>
+            <path d="M7.55599 0.514261C6.58578 0.673003 5.561 0.749566 4.33029 0.755219C4.26311 0.755411 4.19793 0.762949 4.1269 0.778177C3.67202 0.814401 3.33742 1.11912 3.3097 1.52705C3.27905 1.97355 3.24848 4.47246 3.21314 7.36588C3.16072 11.6413 3.09566 16.9627 3.00752 17.5981C2.98672 17.7463 3.00917 17.8849 3.0737 18.0103C3.17749 18.314 3.45283 18.5008 3.8018 18.5008C3.8348 18.5008 3.86918 18.4993 3.90482 18.496C5.31254 18.3581 6.52587 18.3159 7.66724 18.3659C7.85459 18.3727 8.01637 18.3364 8.15669 18.255C8.43711 18.1259 8.60789 17.8857 8.62642 17.5926C8.69964 16.4309 8.70318 1.56616 8.70318 1.41618C8.70318 1.1973 8.61519 1.00172 8.4541 0.860163C8.25425 0.590632 7.91012 0.456271 7.55599 0.514261ZM6.96029 2.1897L6.95933 2.87958C6.95552 5.97597 6.94468 14.9416 6.91772 16.766C6.23865 16.7618 5.55677 16.7834 4.82466 16.8346C4.86566 15.7272 4.89927 12.4226 4.94007 8.04054C4.96329 5.53478 4.98567 3.14846 5.00567 2.32487C5.68497 2.3053 6.32948 2.26069 6.96029 2.1897Z" fill="#2D3B41"/>
+            </g>
+            <defs>
+            <clipPath id="clip0">
+            <rect width="18" height="18" fill="white" transform="translate(0 0.5)"/>
+            </clipPath>
+            </defs>
+        </symbol>
+
+
         <symbol id="iconConfirm" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.9655 2.13663C11.9578 2.1023 11.9417 2.06917 11.9044 2.04103C11.5645 1.78284 10.761 0.741728 10.2333 0.914333C9.49717 1.15536 5.45013 6.26437 4.55297 7.39036C4.23967 6.96075 1.63018 3.52606 1.49924 3.60306C1.05079 3.86602 0.587919 4.09084 0.159587 4.38765C0.111636 4.42103 0.0870392 4.46418 0.0798341 4.50829C0.0211994 4.55215 -0.0163169 4.62487 0.00654071 4.71379C0.37425 6.1466 1.62446 7.27497 2.5174 8.40358C3.03592 9.05896 3.75891 10.7087 4.73359 9.92985C4.75024 9.9165 4.76018 9.90124 4.77111 9.88574C4.96242 9.81089 5.12615 9.66522 5.29758 9.48785C6.04045 8.72018 6.69438 7.87671 7.38358 7.06327C8.12024 6.19357 8.9374 5.37942 9.74661 4.57647C10.4532 3.87532 11.0808 2.94697 11.9136 2.39864C12.0175 2.32974 12.0177 2.21602 11.9655 2.13663ZM2.34622 4.66492C2.11267 4.4668 1.87068 4.27417 1.618 4.08869C1.89031 4.25057 2.13056 4.44535 2.34622 4.66492ZM1.22644 4.82942C1.1765 4.78412 1.1206 4.77482 1.06967 4.78603C1.03762 4.7002 1.01103 4.6139 0.996623 4.52831C0.987182 4.473 0.958858 4.43223 0.922087 4.40482C0.936994 4.39409 0.950908 4.38336 0.966312 4.37287C0.969045 4.41269 0.983952 4.4525 1.01551 4.48874C1.57974 5.12933 2.21553 5.70102 2.78921 6.33304C2.85505 6.40575 2.91939 6.47918 2.98399 6.55213C2.37454 5.99808 1.83714 5.38037 1.22644 4.82942ZM3.5127 9.1064C3.56959 9.16934 3.62624 9.23251 3.68438 9.29426C3.75171 9.38247 3.81979 9.47068 3.8901 9.5577C3.89035 9.55865 3.89059 9.55984 3.89084 9.56056C3.75295 9.44136 3.62624 9.27304 3.5127 9.1064ZM3.69531 7.70958C3.86252 7.8512 4.03743 7.98614 4.22128 8.09437C4.21681 8.1225 4.21905 8.14992 4.22625 8.17638C4.22849 8.18806 4.23346 8.19975 4.23818 8.21119C4.06252 8.03954 3.87941 7.87432 3.69531 7.70958ZM4.50849 9.55031C4.508 9.54864 4.50825 9.54697 4.5075 9.54578C4.50154 9.53267 4.49458 9.52098 4.48862 9.50811C4.65906 9.5062 4.88217 9.38486 5.12714 9.1958C4.91074 9.39177 4.69682 9.52981 4.50849 9.55031ZM10.3136 1.37207C10.1546 1.43859 10.0221 1.5411 9.90364 1.66149C10.0209 1.50081 10.1451 1.37732 10.3136 1.37207ZM6.37934 6.31611C6.28443 6.41171 6.11449 6.55642 5.90952 6.73379C6.09064 6.56 6.27847 6.39478 6.44717 6.22981C6.99749 5.69292 7.42358 5.03444 7.86782 4.40506C8.37168 3.93063 8.89368 3.47909 9.37518 2.98035C9.69195 2.65183 9.88699 2.12519 10.2574 1.84459C10.0105 2.09444 9.81543 2.45538 9.64897 2.80226C9.38487 3.06927 9.15132 3.37109 8.90635 3.66338C8.12844 4.59268 7.23377 5.45571 6.37934 6.31611ZM9.63332 4.09418C9.24151 4.54977 8.80175 4.96459 8.3836 5.39754C8.69914 5.01799 9.01244 4.63655 9.30014 4.2346C9.32275 4.20289 9.35008 4.15831 9.38015 4.10371C9.48127 4.00668 9.58239 3.90989 9.68152 3.81119C9.96873 3.52415 10.3101 3.20874 10.5195 2.8416C10.6868 2.62584 10.8699 2.41175 11.0768 2.28302C10.7769 2.93601 10.0497 3.61045 9.63332 4.09418Z" fill="#2D3B41"/>
         </symbol>
@@ -470,10 +492,10 @@ iconPause
     </symbol>
 
     <symbol id="iconDeleteWord" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1.07999 7.30443C1.27802 7.44087 1.49619 7.5253 1.72338 7.57425C1.45193 12.6239 0.917645 17.8957 2.76432 22.7161C2.85314 22.9478 3.01609 23.0928 3.20301 23.1671C3.26725 23.2569 3.35862 23.3367 3.49042 23.3955C6.79071 24.8611 10.2982 24.7969 13.6822 23.6228C14.1244 23.4692 14.259 23.0496 14.1785 22.692C14.8212 17.801 15.4309 12.7653 14.9265 7.83306C15.3257 7.74511 15.6988 7.57675 15.9761 7.26838C16.524 6.65864 16.4186 5.87416 16.1488 5.17448C16.1494 4.97991 16.0577 4.79376 15.8495 4.66599C15.7669 4.60205 15.6688 4.55754 15.5642 4.53394C14.0485 3.88626 12.4353 3.54776 10.785 3.39046C10.814 3.24301 10.8013 3.08159 10.7299 2.91588C10.2146 1.7276 9.18855 0.326644 7.71305 0.517588C6.29242 0.701292 5.604 2.08761 5.31634 3.35885C4.36743 3.40872 3.42786 3.47138 2.51031 3.5243C2.50393 3.52456 2.49827 3.52675 2.49195 3.52726C2.44841 3.5217 2.40415 3.51895 2.35888 3.5243C1.3753 3.63989 0.547331 4.11019 0.116751 5.03396C0.0594938 5.15668 0.0311964 5.28624 0.0281882 5.41325C-0.0100006 5.53842 -0.0126006 5.68235 0.0403742 5.84377C0.239833 6.44888 0.552073 6.94018 1.07999 7.30443ZM12.7097 22.3499C9.91118 23.2118 6.99109 23.304 4.25394 22.0884C4.21238 22.0701 4.17119 22.058a9 4.13045 22.0475C2.44963 17.4203 2.97637 12.3883 3.23747 7.55839C6.57881 7.32161 9.94457 7.26996 13.2723 7.68928C13.3116 7.73068 13.3567 7.76667 13.4072 7.79828C13.9061 12.6261 13.3368 17.5563 12.7097 22.3499ZM7.84343 2.01394C8.50304 1.92848 8.96543 2.69343 9.25019 3.29425C8.4625 3.26692 7.67114 3.27146 6.88213 3.29425C7.04223 2.71377 7.3225 2.08124 7.84343 2.01394ZM1.83637 5.22776C1.74327 5.30826 2.08712 5.09988 1.97786 5.14531C2.05423 5.11345 2.13464 5.09198 2.21438 5.06995C2.19613 5.075 2.46437 5.02514 2.35883 5.03732C2.36816 5.03625 2.37692 5.03355 2.38615 5.03222C2.42618 5.036 2.46605 5.03997 2.51005 5.03732C6.45374 4.80885 11.0421 4.25336 14.7875 5.83567C14.7993 5.87085 14.8146 5.9048 14.8255 5.94065C14.8405 5.99255 14.8529 6.04537 14.8635 6.09835C14.8643 6.11008 14.8651 6.12257 14.8664 6.14082C14.8675 6.16815 14.8654 6.19573 14.8643 6.22301C14.8638 6.22531 14.8626 6.23066 14.8617 6.23336C14.8457 6.23066 14.7359 6.30974 14.7807 6.30122C14.6976 6.33202 14.6111 6.35374 14.5249 6.37306C14.4837 6.38239 14.4293 6.38897 14.3677 6.39376C14.2875 6.33559 14.1878 6.29215 14.0599 6.27466C10.2211 5.74766 6.3662 5.79427 2.51005 6.09626C2.44051 6.10182 2.37774 6.11696 2.31829 6.13598C1.94237 6.13067 1.70263 5.94825 1.54549 5.56172C1.6181 5.43981 1.69422 5.35074 1.83637 5.22776Z" fill="#2D3B41"/>
-        <path d="M5.68799 10.0311C5.67891 9.05587 4.16589 9.05505 4.17466 10.0311C4.19694 12.4688 4.47798 14.8787 4.78002 17.2943C4.89923 18.2494 6.41383 18.261 6.29335 17.2943C5.9911 14.8784 5.71027 12.4687 5.68799 10.0311Z" fill="#2D3B41"/>
+        <path d="M1.07999 7.30443C1.27802 7.44087 1.49619 7.5253 1.72338 7.57425C1.45193 12.6239 0.917645 17.8957 2.76432 22.7161C2.85314 22.9478 3.01609 23.0928 3.20301 23.1671C3.26725 23.2569 3.35862 23.3367 3.49042 23.3955C6.79071 24.8611 10.2982 24.7969 13.6822 23.6228C14.1244 23.4692 14.259 23.0496 14.1785 22.692C14.8212 17.801 15.4309 12.7653 14.9265 7.83306C15.3257 7.74511 15.6988 7.57675 15.9761 7.26838C16.524 6.65864 16.4186 5.87416 16.1488 5.17448C16.1494 4.97991 16.0577 4.79376 15.8495 4.66599C15.7669 4.60205 15.6688 4.55754 15.5642 4.53394C14.0485 3.88626 12.4353 3.54776 10.785 3.39046C10.814 3.24301 10.8013 3.08159 10.7299 2.91588C10.2146 1.7276 9.18855 0.326644 7.71305 0.517588C6.29242 0.701292 5.604 2.08761 5.31634 3.35885C4.36743 3.40872 3.42786 3.47138 2.51031 3.5243C2.50393 3.52456 2.49827 3.52675 2.49195 3.52726C2.44841 3.5217 2.40415 3.51895 2.35888 3.5243C1.3753 3.63989 0.547331 4.11019 0.116751 5.03396C0.0594938 5.15668 0.0311964 5.28624 0.0281882 5.41325C-0.0100006 5.53842 -0.0126006 5.68235 0.0403742 5.84377C0.239833 6.44888 0.552073 6.94018 1.07999 7.30443ZM12.7097 22.3499C9.91118 23.2118 6.99109 23.304 4.25394 22.0884C4.21238 22.0701 4.17119 22.0589 4.13045 22.0475C2.44963 17.4203 2.97637 12.3883 3.23747 7.55839C6.57881 7.32161 9.94457 7.26996 13.2723 7.68928C13.3116 7.73068 13.3567 7.76667 13.4072 7.79828C13.9061 12.6261 13.3368 17.5563 12.7097 22.3499ZM7.84343 2.01394C8.50304 1.92848 8.96543 2.69343 9.25019 3.29425C8.4625 3.26692 7.67114 3.27146 6.88213 3.29425C7.04223 2.71377 7.3225 2.08124 7.84343 2.01394ZM1.83637 5.22776C1.74327 5.30826 2.08712 5.09988 1.97786 5.14531C2.05423 5.11345 2.13464 5.09198 2.21438 5.06995C2.19613 5.075 2.46437 5.02514 2.35883 5.03732C2.36816 5.03625 2.37692 5.03355 2.38615 5.03222C2.42618 5.036 2.46605 5.03997 2.51005 5.03732C6.45374 4.80885 11.0421 4.25336 14.7875 5.83567C14.7993 5.87085 14.8146 5.9048 14.8255 5.94065C14.8405 5.99255 14.8529 6.04537 14.8635 6.09835C14.8643 6.11008 14.8651 6.12257 14.8664 6.14082C14.8675 6.16815 14.8654 6.19573 14.8643 6.22301C14.8638 6.22531 14.8626 6.23066 14.8617 6.23336C14.8457 6.23066 14.7359 6.30974 14.7807 6.30122C14.6976 6.33202 14.6111 6.35374 14.5249 6.37306C14.4837 6.38239 14.4293 6.38897 14.3677 6.39376C14.2875 6.33559 14.1878 6.29215 14.0599 6.27466C10.2211 5.74766 6.3662 5.79427 2.51005 6.09626C2.44051 6.10182 2.37774 6.11696 2.31829 6.13598C1.94237 6.13067 1.70263 5.94825 1.54549 5.56172C1.6181 5.43981 1.69422 5.35074 1.83637 5.22776Z" fill="#2D3B41"/>
+        <path d="M5.68792 10.0311C5.67885 9.05587 4.16583 9.05505 4.1746 10.0311C4.19688 12.4688 4.47792 14.8787 4.77996 17.2943C4.89917 18.2494 6.41377 18.261 6.29328 17.2943C5.99104 14.8784 5.7102 12.4687 5.68792 10.0311Z" fill="#2D3B41"/>
         <path d="M8.86573 9.87979C8.81342 8.90942 7.29999 8.90412 7.3524 9.87979C7.49664 12.5557 7.59321 15.2339 7.88215 17.8996C7.98611 18.8591 9.50036 18.8692 9.39548 17.8996C9.10649 15.2339 9.00972 12.5557 8.86573 9.87979Z" fill="#2D3B41"/>
-        <path d="M10.7086 10.0052C11.1161 12.9987 10.9211 16.0246 10.9084 19.0343C10.9043 20.0102 12.4174 20.0099 12.4218 19.0343C12.435 15.8785 12.5948 12.7403 12.1678 9.60274C12.0365 8.63986 10.5786 9.05157 10.7086 10.0052Z" fill="#2D3B41"/>
+        <path d="M10.7086 10.0052C11.1162 12.9987 10.9212 16.0246 10.9085 19.0343C10.9044 20.0102 12.4174 20.0099 12.4218 19.0343C12.4351 15.8785 12.5948 12.7403 12.1679 9.60274C12.0366 8.63986 10.5787 9.05157 10.7086 10.0052Z" fill="#2D3B41"/>
     </symbol>
 
 

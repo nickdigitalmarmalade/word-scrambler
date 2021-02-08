@@ -50,8 +50,13 @@ var app = window.app || {};
         }
 		
 		if(app.vue.data.config.hasTimer){
+			app.timer.stop(); 
+			app.timer.restart(); 
 			app.timer.start(app.vue.data.user.time);
         }
+		
+		document.querySelector('.start-screen').classList.add('fade-out');
+		document.querySelector('.game-screen').classList.add('fade-in');
 		
     };
 

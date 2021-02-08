@@ -896,7 +896,7 @@ var app = window.app || {};
         }
         //app.helpers.initialiseAnalytics();
         if (!app.vue.model.isCompletedWithoutErrors) {
-            app.helpers.puzzleStart();
+            //app.helpers.puzzleStart();
         }
         app.helpers.processFeedback();
         //app.marmalytics.init();
