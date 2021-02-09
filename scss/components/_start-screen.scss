@@ -59,6 +59,32 @@
 
 .btn-start span { font-family: $public-sans; font-style: normal; font-weight: 800; font-size: 2.4rem; text-align: center; letter-spacing: 0.15em; color: #fff; }
 
+
+
+/* ----- BUTTON --- */
+.btn-start__letter { }
+
+
+
+.btn-start__letter:nth-child(1) { display: inline-block; transition: all .5s ease-in-out; position:relative; left: 2rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s; } 
+
+.btn-start__letter:nth-child(2) {display: inline-block;transition: all .5s ease-in-out; position:relative; left: -3rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s;} 
+
+.btn-start__letter:nth-child(3) {  display: inline-block;transition: all .5s ease-in-out; position:relative; left: 3rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s; }
+
+.btn-start__letter:nth-child(4) { display: inline-block;transition: all .5s ease-in-out; position:relative; left: -1.5rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s;}
+
+.btn-start__letter:nth-child(5) { display: inline-block;transition: all .5s ease-in-out; position:relative; left: 2rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s; }
+
+
+@keyframes switch {
+    0% {left: 2rem; }
+    100% { left: 0; }
+}
+
+
+/* ----- BUTTON --- */
+
 @media(min-width: $md-width) and (min-height: $min-height){
 	.start-screen { border-radius: 1.6rem; }
 }
