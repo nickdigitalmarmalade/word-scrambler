@@ -3,11 +3,15 @@
 .actions-bar { display: flex; justify-content: space-between; align-items: center; }
 
 .actions-bar .timer-wrapper { display: flex; justify-content: center; align-items: center; 
-    font-family: $amatic; font-size: 3rem; }
+    font-family: $amatic; font-size: 3rem; position: relative; }
 .actions-bar .timer-wrapper p { margin-left: 1rem; }
 .actions-bar .timer-wrapper span { font-weight: 700; }
 .actions-bar .timer-wrapper svg { width: 2.4rem; height: 2.4rem; }
+.actions-bar .timer-wrapper .icon-button { position: absolute; right: -5rem; }
 
 .actions-bar .current-word { display: flex; justify-content: center; align-items: center; }
 
 .current-word .disabled { opacity: .5; }
+
+.actions-bar.no-timer { justify-content: center; }
+.actions-bar.no-timer .icon-button { margin-left: .8rem; margin-right: .8rem; }

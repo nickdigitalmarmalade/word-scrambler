@@ -98,6 +98,16 @@ var app = window.app || {};
     }
 
     app.vue.methods.startGame = function () {
+		
+        if (app.vue.data.config.hasTimer) {
+            if (app.timer) {
+                app.timer.stop();
+            }
+            app.timer = new DMTimer();
+            app.timer.callback = app.helpers.puzzleUpdate;
+
+        }
+		
         app.helpers.puzzleStart();
     };
 

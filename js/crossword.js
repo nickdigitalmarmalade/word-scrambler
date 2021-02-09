@@ -407,6 +407,14 @@ var app = window.app || {};
      * Start puzzle
      */
     app.helpers.puzzleStart = function (vm) {
+		
+		
+		if (app.vue.data.config.hasTimer) {
+            app.timer.restart();
+        }
+		
+		//app.timer.stop();
+		
         app.timer.start(app.vue.data.user.time);
     };
 

@@ -6,7 +6,7 @@ Vue.component('component-buttons', {
                         <svg viewBox="0 0 512 512" class="icon">
                           <use xlink:href="#iconDeleteWord"></use>
                         </svg>
-                        <span class="icon-button__text visuallyhidden">Settings</span>
+                        <span class="icon-button__text visuallyhidden">Delete Word</span>
                     </a>
 
                     <a href="#0" class="icon-button" @click.stop="undoLetter" 
@@ -14,7 +14,7 @@ Vue.component('component-buttons', {
                         <svg viewBox="0 0 512 512" class="icon">
                           <use xlink:href="#iconDeleteLetter"></use>
                         </svg>
-                        <span class="icon-button__text visuallyhidden">Settings</span>
+                        <span class="icon-button__text visuallyhidden">Delete Letter</span>
                     </a>
 
                 </div>`,

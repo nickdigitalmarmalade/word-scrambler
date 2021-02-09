@@ -33,6 +33,8 @@ Vue.component('component-keyboard-key', {
                 new Audio('mp3/tock.mp3').play();
             }
 
+            this.$emit('clicked', 'someValue');
+
         }
 
     },

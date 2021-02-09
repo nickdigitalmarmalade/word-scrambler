@@ -50,4 +50,17 @@
 	.list span {  width: 4rem; height: 4rem; font-size: 3rem; line-height: 3rem; }
 	.grid { position: relative; left: 50%; transform: translateX(-50%); width: auto; display: inline-block; }
 	.word { max-width: 30rem; }
+
+
+.current-word-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+	.current-word { text-align: center; }
+	.word { width: 30rem; }
 }
