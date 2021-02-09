@@ -118,5 +118,19 @@ var app = window.app || {};
     app.vue.watch.userSettings = function () {
         app.helpers.saveUserState();
     };
+	
+    app.vue.watch['user.settings.timer'] = function (val, oldVal) {
+        console.log(val, oldVal);
+		
+		if(val){
+			// Resume timer.
+			app.timer.start();
+		} else {
+			app.timer.stop();
+		}
+		
+    };
+	
+	
 
 }());

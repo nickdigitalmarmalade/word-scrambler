@@ -49,12 +49,14 @@ var app = window.app || {};
 			//app.timer.start(app.vue.data.user.time);
         }
 		
-		if(app.vue.data.config.hasTimer){
+		if(app.vue.data.config.hasTimer && app.vue.data.user.settings.timer){
 			//app.timer.stop(); 
 			app.helpers.resetUserState();
 			app.timer.restart(); 
 			//app.timer.start(app.vue.data.user.time);
         }
+		
+		
 		
 		document.querySelector('.start-screen').classList.add('fade-out');
 		document.querySelector('.game-screen').classList.add('fade-in');
