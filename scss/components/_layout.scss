@@ -11,13 +11,13 @@ body { color: $grey; background-color: $teal; height: 100vh; display: flex; just
 
 @media(min-width: $md-width) and (min-height: $min-height){
 
-	.word-scramble-layout {  width: 64rem; height: 59rem; box-shadow: .2rem .2rem 1rem rgba(0, 0, 0, 0.1); 
+	.word-scramble-layout { overflow: hidden; width: 64rem; height: 59rem; box-shadow: .2rem .2rem 1rem rgba(0, 0, 0, 0.1); 
 		border-radius: 1.6rem; }
 }
 
-.game-screen { opacity: 0; visibility: hidden; transition: all .25s ease-in-out; }
+.game-screen { opacity: 0; visibility: hidden; transition: all .55s ease-in-out; }
 .game-screen.fade-in { opacity: 1; visibility: visible; }
 
-.start-screen { opacity: 1; visibility: visible;transition: all .25s ease-in-out; }
+.start-screen { opacity: 1; visibility: visible; transition: all .55s ease-in-out; }
 
 .start-screen.fade-out { opacity: 0; visibility: hidden;  }

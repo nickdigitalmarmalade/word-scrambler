@@ -6,29 +6,34 @@ Vue.component('component-current-word', {
                             {{ formatCurrentWord }}
                         </div>
 
-                        <a href="#0" class="icon-button" @click.stop="enterWord">
-                            <svg viewBox="0 0 12 12" class="icon">
-                              <use xlink:href="#iconConfirm"></use>
-                            </svg>
-                            <span class="icon-button__text visuallyhidden">Settings</span>
+                        <a href="#0" class="icon-button btn--enter-word"
+                            @click.stop="enterWord" 
+                            :class="{active: this.$root.getCurrentWord.length > 2}">
+                                <svg viewBox="0 0 12 12" class="icon">
+                                  <use xlink:href="#iconConfirm"></use>
+                                </svg>
+                                <span class="icon-button__text visuallyhidden">Enter Word</span>
                         </a>
                     </div>
 
-                    <div class="feedback feedback--correct" 
-                        :class="{'active' : wordstatus === 'new-word'}">
-                            <div class="left-icon"></div>
-                            Wonderful!
-                            <div class="right-icon"></div>
-                    </div>
+                    <div class="feedback-wrapper">
 
-                    <div class="feedback feedback--info" 
-                        :class="{'active' : wordstatus === 'already-found'}">
-                        Repeated word!
-                    </div>
+                        <div class="feedback feedback--correct" 
+                            :class="{'active' : wordstatus === 'new-word'}">
+                                <div class="left-icon"></div>
+                                Wonderful!
+                                <div class="right-icon"></div>
+                        </div>
 
-                    <div class="feedback feedback--incorrect" 
-                        :class="{'active' : wordstatus === 'wrong'}">
-                        Nope... try again!
+                        <div class="feedback feedback--info" 
+                            :class="{'active' : wordstatus === 'already-found'}">
+                            Repeated word!
+                        </div>
+
+                        <div class="feedback feedback--incorrect" 
+                            :class="{'active' : wordstatus === 'wrong'}">
+                            Nope... try again!
+                        </div>
                     </div>
 
                 </div>`,
@@ -104,7 +109,7 @@ Vue.component('component-current-word', {
 
             setTimeout(function(){
                  self.wordstatus = null;
-            //}, 1500);
+            //}, 99999999);
             }, 2000);
         },
         bonusTime: function(){

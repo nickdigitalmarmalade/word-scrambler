@@ -8,8 +8,8 @@
 }
 
 .config { margin: 0; padding: 0; list-style: none; text-align: left;  }
-.config li { color: #fff; position: relative; font-size: 1.8rem; margin: 0; padding: 10px 0; 
-  &:hover { color: #000; }
+.config li { color: #fff; position: relative; font-size: 1.8rem; margin: 0; padding: 4px 0; 
+ // &:hover { color: #000; }
 }
 
 .settings-dropdown__header + .settings-dropdown__options .config { border-top: none; }

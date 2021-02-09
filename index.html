@@ -252,26 +252,25 @@
             <component-current-word></component-current-word>
             <component-keyboard></component-keyboard>
             
-            <div class="actions-bar">
-
+            <div class="actions-bar" :class="{'no-timer': !user.settings.timer}">
 
                 <div class="timer-wrapper" v-if="user.settings.timer">
                     <svg viewBox="0 0 24 24" class="icon">
                       <use xlink:href="#iconTimer"></use>
                     </svg>           
 
-                    <p><span v-html="timerDisplay"></span></p>     
-                </div>
+                    <p><span v-html="timerDisplay"></span></p>
 
-                <a href="#0" class="icon-button"
-                    @click="pauseGame()" 
-                    v-if="user.settings.timer"
-                >
-                    <svg viewBox="0 0 18 19" class="icon">
-                      <use xlink:href="#iconPause"></use>
-                    </svg>
-                    <span class="icon-button__text visuallyhidden">Pause</span>
-                </a>
+                    <a href="#0" class="icon-button"
+                        @click="pauseGame()" 
+                        v-if="user.settings.timer"
+                    >
+                        <svg viewBox="0 0 18 19" class="icon">
+                          <use xlink:href="#iconPause"></use>
+                        </svg>
+                        <span class="icon-button__text visuallyhidden">Pause</span>
+                    </a>
+                </div>
 
                 <component-buttons></component-buttons>
             </div>

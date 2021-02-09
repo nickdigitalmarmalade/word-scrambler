@@ -886,19 +886,19 @@ var app = window.app || {};
             app.vue.init(app.config.el);
             app.helpers.addEventListeners();
         }
-        if (app.vue.data.config.hasTimer) {
-            if (app.timer) {
-                app.timer.stop();
-            }
-            app.timer = new DMTimer();
-            app.timer.callback = app.helpers.puzzleUpdate;
 
-        }
         //app.helpers.initialiseAnalytics();
         if (!app.vue.model.isCompletedWithoutErrors) {
             //app.helpers.puzzleStart();
         }
         app.helpers.processFeedback();
+		
+		if(app.vue.data.config.hasTimer){
+			//app.timer.stop(); 
+			app.helpers.resetUserState();
+		}
+		
+		
         //app.marmalytics.init();
         //app.marmalytics.settings.logLevel = app.platform === 'local' ? 1 : 0;
         //app.marmalytics.pageLoad();
