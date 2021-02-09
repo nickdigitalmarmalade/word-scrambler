@@ -19,5 +19,4 @@ body { color: $grey; background-color: $teal; height: 100vh; display: flex; just
 .game-screen.fade-in { opacity: 1; visibility: visible; }
 
 .start-screen { opacity: 1; visibility: visible; transition: all .55s ease-in-out; }
-
-.start-screen.fade-out { opacity: 0; visibility: hidden;  }
+.start-screen.fade-out { opacity: 0; visibility: hidden; }

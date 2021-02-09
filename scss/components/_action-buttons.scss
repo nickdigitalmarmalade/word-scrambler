@@ -9,9 +9,10 @@
 .actions-bar .timer-wrapper svg { width: 2.4rem; height: 2.4rem; }
 .actions-bar .timer-wrapper .icon-button { position: absolute; left: 9.5rem; }
 
-.actions-bar .current-word { display: flex; justify-content: center; align-items: center; }
+.actions-bar .action-word { display: flex; justify-content: center; align-items: center; }
 
-.current-word .disabled { opacity: .5; }
+.action-word .disabled { opacity: .5; }
+.action-word .icon-button { margin-left: 1.6rem; margin-right: auto; }
 
 .actions-bar.no-timer { justify-content: center; }
 .actions-bar.no-timer .icon-button { margin-left: .8rem; margin-right: .8rem; }

@@ -46,6 +46,8 @@ var DMTimer;
                 function () {
 
                     if(self.count === 300){
+                    //if(self.count === 10){
+
                         self.stop();
 						console.log('stop');
 						

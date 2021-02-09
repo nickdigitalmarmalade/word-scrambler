@@ -1,5 +1,5 @@
 Vue.component('component-buttons', {
-    template: `<div class="current-word">
+    template: `<div class="action-word">
 
                     <a href="#0" class="icon-button" @click.stop="deleteWord"
                     :class="{'disabled' : this.$root.puzzle.current.word.length === 0}">

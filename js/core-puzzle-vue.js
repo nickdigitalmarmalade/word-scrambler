@@ -165,7 +165,7 @@ var app = window.app || {};
     app.vue.computed.timerDisplay = function () {
 
         var duration = (60 * 5) - app.vue.data.user.time;
-
+		//var duration = (10) - app.vue.data.user.time;
         var days = Math.floor(duration / (60 * 60 * 24));
         duration -= days * (60 * 60 * 24);
 
@@ -394,6 +394,8 @@ var app = window.app || {};
 		
         this.hideModal();
 		this.$root.puzzle.current.found = [];
+		this.$root.puzzle.current.level = 0;
+		this.$root.current.score = 0;
     };
 
     app.vue.methods.revealGrid = function () {

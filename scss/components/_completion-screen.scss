@@ -1,23 +1,7 @@
-.completion-bg { background: rgba(0,0,0,.2); z-index: 19; position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; }
-.completion { overflow: hidden; display: none;
-  .close-button { top: 0; right: 0; transform: none;}
-}
+/*! Completion */
 
-
-.completion { position: absolute; top: 0; left: 0; bottom: 0; right:0; background: orange; color: #fff; text-align: center; z-index: 20; padding: 4rem; }
-.completion h1 { font-size: 3.2rem; text-transform: uppercase; }
-.completion.active { display: block; }
-.completion-wrapper { display: flex; justify-content: center;  flex-direction: column; height: 100%; align-items: center; }
-
-@media only screen and (min-width: 768px)  {
-
-  .completion__title { font-size: 4.6rem; margin: 0 0 .5rem; position: relative; z-index: 3000; }
-  .completion__message { font-size: 2.2rem; margin: 0 0 2.5rem; position: relative; z-index: 3000; }
-  .completion__button {  position: relative; z-index: 3000; 
-    .button { margin: 0 auto; }
-  }
-
-}
-
-.completion-bg--visible { display: block; }
-.completion--visible { display: flex; }
+.completion { position: absolute; top: 0; left: 0; bottom: 0; right:0; background: $feedback-correct; color: #fff; text-align: center; z-index: 20; padding: 4rem; justify-content: center;
+    display: flex; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: all .35s ease-in-out; }
+.completion h1 { font-family: $amatic; font-size: 3.6rem; text-transform: uppercase; margin-bottom: 3.6rem; font-weight: 700; }
+.completion.active { visibility: visible; opacity: 1;  }
+//.completion-wrapper { display: flex; justify-content: center;  flex-direction: column; height: 100%; align-items: center; }

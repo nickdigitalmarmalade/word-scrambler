@@ -1,16 +1,14 @@
 
 
 Vue.component('component-keyboard', {
-    template: `<div>
-                    <div class="keyboard">
-                        <div class="keys" v-for="(letter, idx) in splitLetters" :key="idx">
-                            <component-keyboard-key 
-                                :letter="letter" 
-                                :idx="idx">
-                            </component-keyboard-key>
-                        </div>
-                    </div> 
-            </div>`,
+    template: `<div class="keyboard">
+                    <div class="keys" v-for="(letter, idx) in splitLetters" :key="idx">
+                        <component-keyboard-key 
+                            :letter="letter" 
+                            :idx="idx">
+                        </component-keyboard-key>
+                    </div>
+                </div>`,
     props: [],
     computed: {
         splitLetters: function() {

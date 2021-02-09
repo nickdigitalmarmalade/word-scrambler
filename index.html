@@ -216,6 +216,7 @@
 
     <div class="word-scramble-layout" id="vue-container" v-cloak :class="[]">
 
+        <!-- START SCREEN -->
         <div class="start-screen">
             <ul class="start-screen__letters">
                 <li class="start-screen__letter">W</li>
@@ -227,13 +228,14 @@
             <h1 class="start-screen__title">Scrambler</h1>
 
             <a href="#" class="btn-start" @click.stop="startGame">
-                <span>S</span>
-                <span>T</span>
-                <span>A</span>
-                <span>R</span>
-                <span>T</span>
+                <span class="btn-start__letter">S</span>
+                <span class="btn-start__letter">T</span>
+                <span class="btn-start__letter">A</span>
+                <span class="btn-start__letter">R</span>
+                <span class="btn-start__letter">T</span>
             </a>
         </div>
+        <!-- tart SCREEN -->
 
         <div class="game-screen">
             <header>
@@ -254,12 +256,12 @@
             
             <div class="actions-bar" :class="{'no-timer': !user.settings.timer}">
 
-                <div class="timer-wrapper" v-if="user.settings.timer">
+                <div class="timer-wrapper" v-if="user.settings.timer" >
                     <svg viewBox="0 0 24 24" class="icon">
                       <use xlink:href="#iconTimer"></use>
                     </svg>           
 
-                    <p><span v-html="timerDisplay"></span></p>
+                    <p><span v-html="timerDisplay" :class="{'timer-shake': user.time > 295}"></span></p>
 
                     <a href="#0" class="icon-button"
                         @click="pauseGame()" 
@@ -388,20 +390,17 @@
         <!-- HELP SCREEN -->
 
         <!-- COMPLETION SCREEN -->
-       <div class="completion" :class="[{'active': modals.visible.indexOf('completion') >= 0}]">
-
-        <div class="completion-wrapper">
-               
+        <div class="completion" :class="[{'active': modals.visible.indexOf('completion') >= 0}]">
                <h1>Congratulations, you did it!</h1>
-
-               <a href="#" class="btn btn--secondary" @click.stop.prevent="resetGrid">Restart</a>
-            </div>
+               <a href="#" class="btn" @click.stop.prevent="resetGrid">Play Again</a>
         </div>
         <!-- COMPLETION SCREEN -->
 
 
         <!-- FAIL SCREEN -->
-        <div class="fail" v-if="user.time === 300 && user.settings.timer && modals.visible.indexOf('completion') === -1">
+        <div class="fail" 
+            :class="[{'active': user.time === 300 && user.settings.timer && modals.visible.indexOf('completion') === -1}]" 
+            v-if="user.settings.timer">
            <h1>Oh no, you've run out of time!</h1>
            <a href="#" class="btn" @click.stop.prevent="resetGrid">Restart</a>
         </div>
