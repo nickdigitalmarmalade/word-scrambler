@@ -3,20 +3,18 @@ header { display: flex; justify-content: space-between; align-items: center;
  	span { font-weight: 700; }
 }
 
-.game__level { transition: all .25s ease-in-out; }
+.game__level,
 .game__score { transition: all .25s ease-in-out; }
 
-.game__level.active { /* transform: scale(5); */ animation: scale 0.5s ease-in-out 0s; }
-.game__score.active { /* transform: scale(5); */ animation: scale 0.5s ease-in-out 0s;}
-
-
+.game__level.active,
+.game__score.active { animation: scale 0.5s ease-in-out 0s;}
 
 @keyframes scale {
     0% {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.2);
+        transform: scale(1.15);
     }
     100% {
         transform: scale(1);
