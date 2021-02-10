@@ -20,3 +20,23 @@ body { color: $grey; background-color: $teal; height: 100vh; display: flex; just
 
 .start-screen { opacity: 1; visibility: visible; transition: all .55s ease-in-out; }
 .start-screen.fade-out { opacity: 0; visibility: hidden; }
+
+
+/* Animate Game Items */
+.game__header,
+.grid, 
+.current-word,
+.keyboard,
+.actions-bar { opacity: 0; visibility: hidden; transition: all .35s ease-in-out; }
+
+.game__header { transition-delay: .4s; }
+.grid {   transition-delay: .6s; }
+.current-word { transition-delay: .8s; }
+.keyboard  {  transition-delay: 1s; }
+.actions-bar { transition-delay: 1.2s; }
+
+.game-screen.fade-in .game__header,
+.game-screen.fade-in .grid,
+.game-screen.fade-in .current-word,
+.game-screen.fade-in .keyboard,
+.game-screen.fade-in .actions-bar { opacity: 1; visibility: visible; }

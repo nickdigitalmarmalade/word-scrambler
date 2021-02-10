@@ -1,3 +1,5 @@
+/*! Modal */
+
 .modal-bg { background: rgba(0,0,0,.2); z-index: 19; position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; }
 
 
@@ -14,28 +16,6 @@
 .modal-bg--visible,
 .modal--visible { display: flex; }
 
-
-
-.paused { position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background-color: $yellow-light;  visibility:hidden; opacity:0; transition: all .5s ease-in-out; }
-
-.paused.active { visibility: visible; opacity:1; }
-
-.paused .inner-wrapper { display: flex; justify-content: center; align-items: center;     flex-direction: column; height: 100%; }
-
-.paused h1 { font-family: $amatic; font-size: 3.6rem; font-weight: 700; color: $grey; margin-bottom: 2rem; text-transform: uppercase; margin-bottom: 1.6rem; }
-.paused button { background-color: #fff; color: $orange; }
-
-.paused .timer-wrapper { font-family: $amatic; font-size: 3rem; display: flex; justify-content: center; align-items: center; margin-bottom: 1.6rem; }
-.paused .timer-wrapper p { margin-left: .5rem; }
-.paused .timer-wrapper span { font-weight: 700;  }
-.paused .timer-wrapper svg { width: 2.4rem; height: 2.4rem; }
-
 .modal--full {  position: absolute; top: 0; left:0; bottom:0; right:0; width: 100%; height:100%; padding: 2.4rem; background-color: $yellow-light; color: #fff; visibility:hidden; opacity:0; transition: all .5s ease-in-out; z-index: 100; }
 
 .modal--full.active { visibility: visible; opacity:1;}
-
-.help h1 { font-family: $amatic; font-size: 3.6rem; font-weight: 700; color: $grey; margin-bottom: 4.8rem; text-transform: uppercase; margin-bottom: 1.6rem; }
-.help .close-button { transform: translateY(0); position: absolute; top: 2.4rem; right: 2.4rem; width: 3.3rem; height: 3.3rem; } 
-.help .icon { width: 3.3rem; height: 3.3rem; }
-.help { color: $grey;  }
-.help__copy p { font-family: $roboto; font-size: 1.2rem; margin-bottom: 2.4rem; }

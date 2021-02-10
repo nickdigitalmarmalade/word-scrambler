@@ -39,7 +39,10 @@ var app = window.app || {};
 
     app.vue.data.modes.grid = true;
     app.vue.data.paused = false;
-
+	
+	app.vue.data.animations = { };
+	app.vue.data.animations.level = false;
+	app.vue.data.animations.score = false;
 
     /*  ----------------------  */
     /*    Vue Global Methods    */
@@ -119,18 +122,41 @@ var app = window.app || {};
         app.helpers.saveUserState();
     };
 	
-    app.vue.watch['user.settings.timer'] = function (val, oldVal) {
-        console.log(val, oldVal);
-		
-		if(val){
-			// Resume timer.
-			app.timer.start();
+    app.vue.watch['user.settings.timer'] = function (newVal, oldVal) {
+		if(newVal){
+			app.timer.start();// Resume timer.
 		} else {
 			app.timer.stop();
 		}
-		
     };
 	
+    app.vue.watch['current.score'] = function (newVal, oldVal) {
+		if(newVal){
+			
+			var _this = this;
+			
+			console.log("score changed");
+			app.vue.data.animations.score = true;
+		
+			setTimeout(function(){
+				_this.animations.score = false;
+			}, 1500);
+			
+		}
+    };
 	
+    app.vue.watch['puzzle.current.level'] = function (newVal, oldVal) {
+		if(newVal){
+			
+			var _this = this;
+			
+			console.log("level changed");
+			app.vue.data.animations.level = true;
+			
+			setTimeout(function(){
+				_this.animations.level = false;
+			}, 1500);
+		}
+    };
 
 }());

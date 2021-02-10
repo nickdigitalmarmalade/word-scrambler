@@ -238,9 +238,13 @@
         <!-- tart SCREEN -->
 
         <div class="game-screen">
-            <header>
-                <p>Level <span>{{ puzzle.current.level }}</span></p>
-                <p class="score">Score <span>{{ current.score }}</span></p>
+            <header class="game__header">
+                <p class="game__level"
+                    :class="{'active' : animations.level}">Level <span>{{ puzzle.current.level + 1 }}</span>
+                </p>
+                <p class="game__score"
+                    :class="{'active' : animations.score}"class="score">Score <span>{{ current.score }}</span>
+                </p>
 
                 <a href="#0" class="icon-button" @click.stop="showSet('settings', true)">
                     <svg viewBox="0 0 512 512" class="icon">
@@ -257,11 +261,11 @@
             <div class="actions-bar" :class="{'no-timer': !user.settings.timer}">
 
                 <div class="timer-wrapper" v-if="user.settings.timer" >
-                    <svg viewBox="0 0 24 24" class="icon">
+                    <svg viewBox="0 0 24 24" class="icon-clock">
                       <use xlink:href="#iconTimer"></use>
-                    </svg>           
+                    </svg>
 
-                    <p><span v-html="timerDisplay" :class="{'timer-shake': user.time > 295}"></span></p>
+                    <p><span v-html="timerDisplay" :class="{'timer-shake': user.time >= 290}"></span></p>
 
                     <a href="#0" class="icon-button"
                         @click="pauseGame()" 

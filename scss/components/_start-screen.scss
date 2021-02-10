@@ -3,7 +3,7 @@
 .start-screen {
 	    height: 100%; display: flex; flex-direction: column; padding: 2rem 1.6rem; background: $yellow url('../img/pattern.svg') repeat center center; justify-content: center; align-items: center; position: absolute; top:0; right:0; bottom:0; left:0; overflow: hidden; z-index:10; }
 .start-screen__letters { list-style: none; margin: 0 0 1rem 0; padding:0; display: flex; justify-content: center; align-items: center;  }
-.start-screen__letter { font-family: $alfa-slab; color: $grey; font-weight: 700; font-size: 4.8rem; text-align: center; text-transform: uppercase;  width: 7rem; height: 7rem; background-color: #fff; border-radius: .8rem; box-shadow: 0px 0px 10px rgba(45, 59, 65, 0.2); }
+.start-screen__letter { font-family: $alfa-slab; color: $grey; font-weight: 700; font-size: 4.8rem; text-align: center; text-transform: uppercase;  width: 7rem; height: 7rem; background-color: #fff; border-radius: .8rem; box-shadow: 0px 0px 10px rgba(45, 59, 65, 0.2); display: flex; justify-content: center; align-items: center; }
 
 .start-screen__letter:nth-child(1) { transform: rotate(-15deg) translateY(-100vh); transition: all .5s ease-in-out; transition-delay: .3s; position:relative; left: 14rem; 
 
@@ -61,29 +61,47 @@
 
 
 
-/* ----- BUTTON --- */
+/* Start Button */
 .btn-start__letter { }
 
+.btn-start__letter:nth-child(1),
+.btn-start__letter:nth-child(2),
+.btn-start__letter:nth-child(3),
+.btn-start__letter:nth-child(4),
+.btn-start__letter:nth-child(5) { display: inline-block;transition: all .5s ease-in-out; position:relative;} 
 
+.btn-start__letter:nth-child(1) { left: 2rem; animation: switch1 1s ease-in-out 1 forwards;  animation-delay: 3.5s; } 
+.btn-start__letter:nth-child(2) { left: -3rem; animation: switch2 1s ease-in-out 1 forwards;  animation-delay: 3.5s; } 
+.btn-start__letter:nth-child(3) { left: 3rem; animation: switch3 1s ease-in-out 1 forwards;  animation-delay: 3.5s; } 
+.btn-start__letter:nth-child(4) { left: -1.5rem; animation: switch4 1s ease-in-out 1 forwards;  animation-delay: 3.5s; } 
+.btn-start__letter:nth-child(5) { left: 2rem; animation: switch5 1s ease-in-out 1 forwards;  animation-delay: 3.5s;  } 
 
-.btn-start__letter:nth-child(1) { display: inline-block; transition: all .5s ease-in-out; position:relative; left: 2rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s; } 
-
-.btn-start__letter:nth-child(2) {display: inline-block;transition: all .5s ease-in-out; position:relative; left: -3rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s;} 
-
-.btn-start__letter:nth-child(3) {  display: inline-block;transition: all .5s ease-in-out; position:relative; left: 3rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s; }
-
-.btn-start__letter:nth-child(4) { display: inline-block;transition: all .5s ease-in-out; position:relative; left: -1.5rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s;}
-
-.btn-start__letter:nth-child(5) { display: inline-block;transition: all .5s ease-in-out; position:relative; left: 2rem; animation: switch 1s ease-in-out 1 forwards; animation-delay: 5s; }
-
-
-@keyframes switch {
+@keyframes switch1 {
     0% {left: 2rem; }
     100% { left: 0; }
 }
 
+@keyframes switch2 {
+    0% {left: -3rem; }
+    100% { left: 0; }
+}
 
-/* ----- BUTTON --- */
+@keyframes switch3 {
+    0% {left: 3rem; }
+    100% { left: 0; }
+}
+
+@keyframes switch4 {
+    0% {left: -1.5rem; }
+    100% { left: 0; }
+}
+
+@keyframes switch5 {
+    0% {left: 2rem; }
+    100% { left: 0; }
+}
+
+/* Start Button */
 
 @media(min-width: $md-width) and (min-height: $min-height){
 	.start-screen { border-radius: 1.6rem; }

@@ -28,24 +28,8 @@
   .icon { height: 3.2rem; width: 3.2rem; }
 }
 
-// @media only screen and (min-width: 768px)  {
-//   .settings-dropdown-bg { background: rgba(0,0,0,.2); z-index: 19; position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; 
-//     .active & { display: block; }
-//   }
-//   .settings-dropdown { position: absolute; top: -1.4rem;
-//     left: -1.4rem; background: #fff; z-index: 20; padding: 0 2rem 2rem; width: 30rem; box-shadow: 0 0 3rem rgba(0,0,0,.2); display: none; 
-//     .active & { display: block; }
-//     .close-button { left: 1rem; right: auto; }
-//   }
-//   .settings-dropdown__header { padding: 1.4rem 2rem 1.3rem; }
-// }
-
-
-
-
 
 @media(min-width: $md-width) and (min-height: $min-height){
-	//.desktop-menu__settings { width: 100%; height: 100%; position: absolute; top: 0; right: 0;bottom:0; left:0;  border-radius: 1.6rem; } 
-
+	.config { max-width: 32rem;  margin: 0 auto; }
 	.settings-dropdown { position: absolute; border-radius: 1.6rem; }
 }
