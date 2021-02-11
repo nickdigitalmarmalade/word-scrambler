@@ -1,6 +1,6 @@
 /*! Layout */
 
-* { outline: 0 none; }
+* { outline: 0 none; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color: transparent; }
 
 .word-scramble-layout { height: 100vh; }
 .word-scramble-layout { position: relative; width: 100%; margin: 0 auto; padding: 2rem 2.5rem; }

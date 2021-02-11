@@ -32,7 +32,7 @@ Vue.component('component-current-word', {
 
                         <div class="feedback feedback--incorrect" 
                             :class="{'active' : wordstatus === 'wrong'}">
-                            Nope... try again!
+                            Not one of the missing words... try again
                         </div>
                     </div>
 

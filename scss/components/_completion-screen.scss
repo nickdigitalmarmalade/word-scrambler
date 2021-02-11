@@ -1,6 +1,6 @@
 /*! Completion */
 
-.completion { position: absolute; top: 0; left: 0; bottom: 0; right:0; background: $feedback-correct; color: #fff; text-align: center; z-index: 20; padding: 4rem; justify-content: center;
+.completion { border-radius: 1.6rem; position: absolute; top: 0; left: 0; bottom: 0; right:0; background: $feedback-correct; color: #fff; text-align: center; z-index: 20; padding: 4rem; justify-content: center;
     display: flex; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: all .35s ease-in-out; }
 .completion h1 { font-family: $amatic; font-size: 3.6rem; text-transform: uppercase; margin-bottom: 3.6rem; font-weight: 700; }
 .completion.active { visibility: visible; opacity: 1;  }
