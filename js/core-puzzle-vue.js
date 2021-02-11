@@ -394,8 +394,10 @@ var app = window.app || {};
 		
         this.hideModal();
 		this.$root.puzzle.current.found = [];
+		this.$root.puzzle.current.word = [];
 		this.$root.puzzle.current.level = 0;
 		this.$root.current.score = 0;
+		
     };
 
     app.vue.methods.revealGrid = function () {

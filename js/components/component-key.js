@@ -12,6 +12,10 @@ Vue.component('component-keyboard-key', {
 
         addLetter: function(letter, idx){
 
+            if (app.media.supports.audio && app.vue.data.user.settings.soundskeyboard) {
+                new Audio('mp3/tock.mp3').play();
+            }
+
             var currentWord = this.$root.puzzle.current.word;
 
             this.isLetterUsed = !this.isLetterUsed;
@@ -23,18 +27,8 @@ Vue.component('component-keyboard-key', {
                 // Remove item.
                 var letterIndex = currentWord.indexOf(letter);
                 currentWord.splice(letterIndex, 1);
-
-                //this.$root.puzzle.current.word.splice(this.$root.puzzle.current.word.findIndex(x => x.id === letter.id), 1);
             }
-
-            console.log(this.$root.puzzle.current.word);
-
-            if (app.media.supports.audio && app.vue.data.user.settings.soundskeyboard) {
-                new Audio('mp3/tock.mp3').play();
-            }
-
-            this.$emit('clicked', 'someValue');
-
+            //console.log(this.$root.puzzle.current.word);
         }
 
     },

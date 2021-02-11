@@ -11,7 +11,7 @@ Vue.component('component-grid', {
 
         wordsList: function() {
 
-            console.log(this.$root.puzzle.levels[this.$root.puzzle.current.level].correctwords);
+            //console.log(this.$root.puzzle.levels[this.$root.puzzle.current.level].correctwords);
             
             return this.$root.puzzle.levels[this.$root.puzzle.current.level].correctwords;
         }

@@ -2,10 +2,16 @@
 
 * { outline: 0 none; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color: transparent; }
 
-.word-scramble-layout { height: 100vh; }
+ .word-scramble-layout { /*  height: 100vh; */ height: 100%;  }
 .word-scramble-layout { position: relative; width: 100%; margin: 0 auto; padding: 2rem 2.5rem; }
 
-body { color: $grey; background-color: $teal; height: 100vh; display: flex; justify-content: center; align-items: center; }
+body { color: $grey; background-color: $teal;  display: flex; justify-content: center; align-items: center;    
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;}
 
 .word-scramble-layout { background: $yellow url('../img/pattern.svg') repeat center center;}
 

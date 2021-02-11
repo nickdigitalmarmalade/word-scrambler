@@ -590,7 +590,24 @@
 
         setTimeout(function(){
             document.querySelector('.start-screen').classList.add('animate-start');
-        }, 1000)
+        }, 1000);
+
+        var audio = [];
+
+        function preload() {
+            for (var i = 0; i < arguments.length; i++) {
+                audio[i] = new Audio();
+                audio[i].src = preload.arguments[i];
+            }
+        }
+
+        //-- usage --//
+        preload(
+            "mp3/tock.mp3",
+            "mp3/success.mp3",
+            "mp3/error.mp3"
+        )
+
     </script>
 
 </body>
