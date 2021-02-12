@@ -119,4 +119,16 @@ var app = window.app || {};
         app.marmalytics.setData(app.json);
     };
 
+    app.helpers.playSound = function (file) {
+        if (!app.media.supports.audio && !app.vue.data.user.settings.soundskeyboard) {
+            return false;
+        }
+
+        var sound = new Audio('mp3/' + file + '.mp3');
+        sound.pause();
+        sound.currentTime = 0;
+        sound.play();
+    };
+
+
 }());

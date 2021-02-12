@@ -192,7 +192,8 @@
     <script src="js/vendor/vue.js"></script>
     <script src="js/vendor/axios.min.js"></script>
     <script src="js/vendor/modernizr.js"></script>
-
+    <script src="js/vendor/soundjs.min.js"></script>
+s
 </head>
 
 <body ontouchstart="">
@@ -592,21 +593,29 @@
             document.querySelector('.start-screen').classList.add('animate-start');
         }, 1000);
 
-        var audio = [];
+        // var audio = [];
 
-        function preload() {
-            for (var i = 0; i < arguments.length; i++) {
-                audio[i] = new Audio();
-                audio[i].src = preload.arguments[i];
-            }
-        }
+        // function preload() {
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         audio[i] = new Audio();
+        //         audio[i].src = preload.arguments[i];
+        //     }
+        // }
 
-        //-- usage --//
-        preload(
-            "mp3/tock.mp3",
-            "mp3/success.mp3",
-            "mp3/error.mp3"
-        )
+        // //-- usage --//
+        // preload(
+        //     "mp3/tock.mp3",
+        //     "mp3/success.mp3",
+        //     "mp3/error.mp3"
+        // )
+
+
+  
+    createjs.Sound.registerSound("mp3/tock.mp3", "tock");
+    createjs.Sound.registerSound("mp3/success.mp3", "success");
+    createjs.Sound.registerSound("mp3/error.mp3", "error");
+
+
 
     </script>
 

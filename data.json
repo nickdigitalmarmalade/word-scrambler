@@ -20,7 +20,7 @@
       "crosswordadditionalcopy":"",
       "levels":[
          {
-            "startingletters": "WASDFE",
+            "startingletters": "ASDFE",
             "correctwords":["FAD", "SAD", "SEA", "ADS", "SAFE", "FADES"]
          },
          {
